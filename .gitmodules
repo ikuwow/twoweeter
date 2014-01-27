@@ -1,3 +1,6 @@
 [submodule "app/Plugin/DebugKit"]
 	path = app/Plugin/DebugKit
 	url = git@github.com:cakephp/debug_kit.git
+[submodule "app/Plugin/BoostCake"]
+	path = app/Plugin/BoostCake
+	url = git@github.com:slywalker/cakephp-plugin-boost_cake.git

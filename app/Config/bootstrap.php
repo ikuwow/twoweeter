@@ -106,3 +106,6 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+// BoostCake 2014/1/27
+CakePlugin::load('BoostCake');

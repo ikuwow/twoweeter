@@ -32,6 +32,25 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array('DebugKit.Toolbar');
+    public $helpers = array(
+        'Session',
+        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Form' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Paginator' => array('className' => 'BoostCake.BoostCakeHtml'),
+    );
+
+    public $components = array(
+        'DebugKit.Toolbar',
+        /*'Auth' => array(
+            'flash' => array(
+                'element' => 'alert',
+                'key' => 'auth',
+                'params' => array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-error'
+                )
+            )
+        )*/
+    );
 
 }
