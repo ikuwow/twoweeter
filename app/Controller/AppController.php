@@ -20,6 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('TwitterOAuth', 'Vendor/TwitterOAuth/');
 
 /**
  * Application Controller
@@ -53,4 +54,14 @@ class AppController extends Controller {
         )*/
     );
 
+    /*
+    public function beforeFilter() {
+        $this->TwitterOAuth = new TwitterOAuth(
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            ACCESS_TOKEN,
+            ACCESS_TOKEN_SECRET
+        );
+    }
+     */
 }
