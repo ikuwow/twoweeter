@@ -10,7 +10,7 @@ class UsersController extends AppController {
         if (!isset($_GET['oauth_verifier'])) { // 認証前
 
             $to = new TwitterOAuth(CONSUMER_KEY,CONSUMER_SECRET);
-            $request_token = $to->getRequestToken('http://local.ikuwow.com/twoweeter/users/register');
+            $request_token = $to->getRequestToken('http://'.$_SERVER['SERVER_NAME'].'/users/register');
 
             if (!isset($request_token)) {
                 echo 'Error on request token';
@@ -47,7 +47,7 @@ class UsersController extends AppController {
             //$_SESSION['access_token'] = $access_token;
     
             $me = $to->get('account/verify_credentials');
-            $_SESSION['me'] = $me;
+            $this->Session->write('me',$me);
     
         // 初回なら、DBに挿入しつつ取得
             /*
