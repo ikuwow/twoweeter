@@ -64,6 +64,13 @@ $title_for_layout = 'Twoweeter';
 		</div>
 	</div>
     -->
+    <?php echo $this->element('footer');?>
+
 	<?php echo $this->element('sql_dump'); ?>
+
+<!-- JavaScript -->
+<?php echo $this->Html->script('jquery-1.10.2');?>
+<?php echo $this->Html->script('bootstrap');?>
+
 </body>
 </html>

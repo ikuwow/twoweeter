@@ -25,7 +25,7 @@ $title_for_layout = 'Twoweeter';
 <!-- <html lang="en"> -->
 <head>
 	<?php echo $this->Html->charset(); ?>
-    <meta name="description" content="">
+    <meta name="description" content="Twoweeter">
     <meta name="author" content="ゐくを ikuwow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
@@ -82,26 +82,22 @@ $title_for_layout = 'Twoweeter';
 
     <div class="container">
 
-			<?php echo $this->fetch('content'); ?>
+	<?php echo $this->fetch('content'); ?>
 
     </div><!-- container -->
 
+    <!-- footer -->
     <div class="container">
-
         <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-
+        <?php echo $this->element('footer');?>
     </div>
     <!-- /.container -->
 
 	<?php echo $this->element('sql_dump'); ?>
+
+<!-- JavaScript -->
+<?php echo $this->Html->script('jquery-1.10.2');?>
+<?php echo $this->Html->script('bootstrap');?>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ echo $this->Html->link(
 
 <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <p class="lead">Shop Name</p>
         <div class="list-group">
             <a href="#" class="list-group-item active">Printable</a>
@@ -25,7 +25,7 @@ echo $this->Html->link(
         </div>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-8">
 
         <div class="thumbnail">
             <img class="img-responsive" src="http://placehold.it/800x300" alt="">
