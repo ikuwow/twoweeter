@@ -4,7 +4,7 @@
 # drop table if exists users;
 create table if not exists users (
     id int not null primary key auto_increment, 
-    tw_user_id int unique not null,
+    tw_user_id bigint unique not null,
     screen_name varchar(100) unique not null,
     icon_url varchar(100),
     is_registered boolean not null default 0,
