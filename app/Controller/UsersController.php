@@ -17,9 +17,7 @@ class UsersController extends AppController {
                 die();
             }
     
-            //$_SESSION['oauth_token'] = $request_token['oauth_token'];
             $this->Session->write('oauth_token',$request_token['oauth_token']);
-            //$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
             $this->Session->write('oauth_token_secret',$request_token['oauth_token_secret']);
     
             $authorize_URI = $to->getAuthorizeURL($request_token['oauth_token']);

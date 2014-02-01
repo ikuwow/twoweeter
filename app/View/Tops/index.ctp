@@ -26,7 +26,19 @@
     <div class="vert-text">
         <h1>Twoweeter</h1>
         <h3>See your timeline <em>two weeks ago</em>.</h3>
-        <a href="#about" class="btn btn-primary btn-lg">Twitterアカウントでログイン</a>
+        <?php
+        echo $this->Html->link(
+            'Twitterアカウントでログイン',
+            array(
+                'controller' => 'users',
+                'action' => 'register'
+            ),
+            array(
+                'class' => array('btn','btn-primary','btn-lg')
+            )
+        );
+        ?>
+
     </div>
 </div>
 <!-- /Full Page Image Header Area -->
@@ -149,8 +161,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h3>The buttons below are impossible to resist.</h3>
-                <a href="#" class="btn btn-lg btn-primary">Twitterアカウントでログイン</a>
+                <h3>Now, let's start!</h3>
+        <?php
+        echo $this->Html->link(
+            'Twitterアカウントでログイン',
+            array(
+                'controller' => 'users',
+                'action' => 'register'
+            ),
+            array(
+                'class' => array('btn','btn-primary','btn-lg')
+            )
+        );
+        ?>
             </div>
         </div>
     </div>
@@ -174,7 +197,7 @@
                     <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
                 </div>
                 <hr>
-                <p>Copyright &copy; www.ikuwow.com <?php echo date('Y');?></p>
+                <p>Copyright &copy; ゐくを(ikuwow) All Rights Reserved. <?php echo date('Y');?></p>
             </div>
         </div>
     </div>
