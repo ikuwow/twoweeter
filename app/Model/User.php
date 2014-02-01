@@ -17,19 +17,6 @@ class User extends AppModel {
         return $data['User']['id'];
     }
 
-    // 一つ取ってくるならインデックスが貼られてるidで引くべき。
-    // 使わない
-    /*
-    public function getUserByTwitterUserId($id) {
-        $options = array(
-            'conditions' => array(
-                'tw_user_id' => $id,
-            ),
-            'limit'=>1,
-        );
-        return $this->find('first',$options);
-    }
-     */
 
     public function getUserById($id) {
         $options = array(

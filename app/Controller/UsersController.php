@@ -68,14 +68,12 @@ class UsersController extends AppController {
                 die();
             }
             /*
-    
             // ログイン処理
             if(!empty($user)) {
                 // セッションハイジャック対策
                 session_regenerate_id(true);
                 $_SESSION['me'] = $me;
             }
-    
              */
             $this->redirect(array('controller'=>'tops','action'=>'timeline'));
 

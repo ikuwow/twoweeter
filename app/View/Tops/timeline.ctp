@@ -1,6 +1,6 @@
+
+<p>現在@<?php echo $me->screen_name;?>でログイン中</p>
 <?php
-echo 'here is timeline.ctp';
-debug($me);
 echo $this->Html->link(
     'Logout',
     array(
