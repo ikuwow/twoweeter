@@ -52,10 +52,9 @@ class UsersController extends AppController {
     
             // 初回なら、DBに挿入しつつ取得
             //$user = $this->User->getUserByTwitterUserId($me);
-            $this->set('me',$me);
             $user = $this->User->getUserByTwitterUserId($me->id);
-            //if (!$user) {
-            //}
+            if (!$user) {
+            }
             /*
             if (!$user) {
             $sql = 'insert into users (
@@ -86,12 +85,9 @@ class UsersController extends AppController {
             $_SESSION['me'] = $me;
         }
     
-        // トップへ
-        header('Location: index.php');
-        die();
-
              */
-        $this->redirect(array('controller'=>'tops','action'=>'timeline'));
+            $this->redirect(array('controller'=>'tops','action'=>'timeline'));
+
         }
     
     }

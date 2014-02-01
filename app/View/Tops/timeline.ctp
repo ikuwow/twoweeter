@@ -4,7 +4,7 @@ debug($me);
 echo $this->Html->link(
     'Logout',
     array(
-        'controller'=>'Users',
+        'controller'=>'users',
         'action'=>'logout'
     ),
     array(

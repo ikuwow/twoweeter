@@ -8,6 +8,7 @@ create table if not exists users (
     screen_name varchar(100) unique not null,
     icon_url varchar(100),
     is_registered boolean not null default 0,
+    last_login datetime,
     created datetime not null,
     modified datetime
 ) engine = InnoDB default charset=utf8;
