@@ -16,6 +16,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+$title_for_layout = 'Twoweeter';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +26,7 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="ゐくを ikuwow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
 		<?php echo $title_for_layout; ?>
@@ -34,7 +36,6 @@
 
 		//echo $this->Html->css('cake.generic');
         echo $this->Html->css('bootstrap');
-        echo $this->Html->css('stylish-portfolio');
         echo $this->Html->css('font-awesome/css/font-awesome.min.css');
 
         /* ブロックの呼び出し。

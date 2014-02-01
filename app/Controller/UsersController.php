@@ -75,7 +75,7 @@ class UsersController extends AppController {
                 $_SESSION['me'] = $me;
             }
              */
-            $this->redirect(array('controller'=>'tops','action'=>'timeline'));
+            $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
 
         }
     

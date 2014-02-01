@@ -1,5 +1,7 @@
 <!-- index.ctp -->
 
+<?php echo $this->Html->css('stylish-portfolio');?>
+
 <!-- Side Menu -->
 <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
 <div id="sidebar-wrapper">
@@ -197,7 +199,7 @@
                     <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
                 </div>
                 <hr>
-                <p>Copyright &copy; ゐくを(ikuwow) All Rights Reserved. <?php echo date('Y');?></p>
+                <p>Copyright &copy; ゐくを (ikuwow) All Rights Reserved. <?php echo date('Y');?></p>
             </div>
         </div>
     </div>
