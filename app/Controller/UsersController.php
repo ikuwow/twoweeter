@@ -91,8 +91,13 @@ class UsersController extends AppController {
         die();
 
              */
-        $this->redirect(array('controller'=>'Tops','action'=>'timeline'));
+        $this->redirect(array('controller'=>'tops','action'=>'timeline'));
         }
     
+    }
+    
+    public function logout() {
+        $this->Session->destroy();
+        $this->redirect(array('controller'=>'tops','action'=>'index'));
     }
 }
