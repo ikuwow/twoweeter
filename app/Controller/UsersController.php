@@ -6,10 +6,16 @@ class UsersController extends AppController {
         'User',
     );
 
+    // Toppage
     public function index(){
     }
 
     public function register() {
+
+        // セッションをクリア
+        if($this->Session->check('referer')){
+           $this->Session->delete('referer');
+        }
 
         if (!isset($_GET['oauth_verifier'])) { // 認証前
 
@@ -51,39 +57,24 @@ class UsersController extends AppController {
             $this->Session->write('me',$me);
     
             // 初回なら、DBに挿入しつつ取得
-            //$user = $this->User->getUserByTwitterUserId($me);
-            $user = $this->User->getUserByTwitterUserId($me->id);
-            if (!$user) {
+            $is_saved = $this->User->find('count',array('conditions'=>array('tw_user_id'=>$me->id))); 
+            if (!$is_saved) {
+                $stat = $this->User->insertTwitterUserInfo($me);
+            } else {
+                $stat = $this->User->updateTwitterUserInfo($me);
+            }
+            if (!$stat) {
+                echo 'error!!';
+                die();
             }
             /*
-            if (!$user) {
-            $sql = 'insert into users (
-                tw_user_id, tw_screen_name, tw_access_token, tw_access_token_secret, created, modified 
-                ) values (
-                    :id_str, :screen_name, :access_token, :access_token_secret, now(), now()
-                )';
     
-            $stmt = $dbh->prepare($sql);
-            $params = array(
-                ':id_str' => $me->id_str,
-                ':screen_name' => $me->screen_name,
-                ':access_token'=> $me->oauth_token,
-                ':access_token_secret' => $me->oauth_token_secret,
-            );
-            $stmt->execute($params);
-            $myId = $dbh->lastInsertId();
-            $sql = 'select * from users where id=:id limit 1';
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute(array(':id' => $myId));
-            $user = $stmt->fetch();
-        }
-    
-        // ログイン処理
-        if(!empty($user)) {
-            // セッションハイジャック対策
-            session_regenerate_id(true);
-            $_SESSION['me'] = $me;
-        }
+            // ログイン処理
+            if(!empty($user)) {
+                // セッションハイジャック対策
+                session_regenerate_id(true);
+                $_SESSION['me'] = $me;
+            }
     
              */
             $this->redirect(array('controller'=>'tops','action'=>'timeline'));

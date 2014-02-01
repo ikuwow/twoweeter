@@ -2,6 +2,24 @@
 /* User Model */
 class User extends AppModel {
 
+    // twitterのユーザidからDBのユーザIDを引く
+    public function getUserIdByTwitterUserId($tw_user_id) {
+        $data = $this->find(
+            'first',
+            array(
+                'conditions' => array(
+                    'tw_user_id' => $tw_user_id,
+                ),
+                'fields' => 'User.id',
+                'limit' => 1
+            )
+        );
+        return $data['User']['id'];
+    }
+
+    // 一つ取ってくるならインデックスが貼られてるidで引くべき。
+    // 使わない
+    /*
     public function getUserByTwitterUserId($id) {
         $options = array(
             'conditions' => array(
@@ -10,5 +28,48 @@ class User extends AppModel {
             'limit'=>1,
         );
         return $this->find('first',$options);
+    }
+     */
+
+    public function getUserById($id) {
+        $options = array(
+            'conditions' => array(
+                'id' => $id,
+            ),
+            'limit'=>1,
+        );
+        return $this->find('first',$options);
+    }
+        
+
+    // idで引くのは、duplicationを自動で検出して
+    // insertかupdateか選択してくれるから。
+    public function updateTwitterUserInfo($me) {
+        $data = array(
+            'User' => array(
+                'id' => $this->getUserIdByTwitterUserId($me->id),
+                'tw_user_id' => $me->id,
+                'screen_name' => $me->screen_name,
+                'icon_url' => $me->profile_image_url,
+                'is_registered' => true,
+                'last_login' => date('Y-m-d H:i:s'),
+            )
+        );
+        $stat = $this->save($data);
+        return $stat;
+    }
+
+    public function insertTwitterUserInfo($me) {
+        $data = array(
+            'User' => array(
+                'tw_user_id' => $me->id,
+                'screen_name' => $me->screen_name,
+                'icon_url' => $me->profile_image_url,
+                'is_registered' => true,
+                'last_login' => date('Y-m-d H:i:s'),
+            )
+        );
+        $stat = $this->save($data);
+        return $stat;
     }
 }
