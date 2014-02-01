@@ -2,6 +2,10 @@
 /* UsersController */
 class UsersController extends AppController {
 
+    public $uses = array(
+        'User',
+    );
+
     public function index(){
     }
 
@@ -42,14 +46,18 @@ class UsersController extends AppController {
             // アクセストークンをゲット。基本的にこれで完了
             $access_token = $to->getAccessToken($_REQUEST['oauth_verifier']);
             $this->Session->write('access_token',$access_token);
-            //$_SESSION['access_token'] = $access_token;
     
             $me = $to->get('account/verify_credentials');
             $this->Session->write('me',$me);
     
-        // 初回なら、DBに挿入しつつ取得
+            // 初回なら、DBに挿入しつつ取得
+            //$user = $this->User->getUserByTwitterUserId($me);
+            $this->set('me',$me);
+            $user = $this->User->getUserByTwitterUserId($me->id);
+            //if (!$user) {
+            //}
             /*
-        if (!$user) {
+            if (!$user) {
             $sql = 'insert into users (
                 tw_user_id, tw_screen_name, tw_access_token, tw_access_token_secret, created, modified 
                 ) values (
@@ -83,7 +91,7 @@ class UsersController extends AppController {
         die();
 
              */
-            $this->redirect('/');
+            //$this->redirect('/');
         }
     
     }
