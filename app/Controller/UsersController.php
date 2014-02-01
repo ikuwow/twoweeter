@@ -91,7 +91,7 @@ class UsersController extends AppController {
         die();
 
              */
-            //$this->redirect('/');
+        $this->redirect(array('controller'=>'Tops','action'=>'timeline'));
         }
     
     }
