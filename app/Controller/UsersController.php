@@ -62,12 +62,12 @@ class UsersController extends AppController {
             // アクセスに必要な情報
             $id = $this->User->getUserIdByTwitterUserId($me->id);
             if (empty($id)) { // 初めての登録
-                $stat = $this->User->insertTwitterUserInfo($me);
+                $stat = $this->User->insertTwitterUserInfo($me,true);
                 $id = $this->User->getLastInsertID();
                 $stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
                 $id = $this->User->getUserIdByTwitterUserId($me->id);
             } else { // 二回目以降
-                $stat = $this->User->updateTwitterUserInfo($me);
+                $stat = $this->User->updateTwitterUserInfo($me,true);
                 //$stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
             }
             if (!$stat) {

@@ -36,14 +36,14 @@ class User extends AppModel {
 
     // idで引くのは、duplicationを自動で検出して
     // insertかupdateか選択してくれるから。
-    public function updateTwitterUserInfo($me) {
+    public function updateTwitterUserInfo($me,$is_registered=null) {
         $data = array(
             'User' => array(
                 'id' => $this->getUserIdByTwitterUserId($me->id),
                 'tw_user_id' => $me->id,
                 'screen_name' => $me->screen_name,
                 'icon_url' => $me->profile_image_url,
-                'is_registered' => true,
+                'is_registered' => $is_registered,
                 'last_login' => date('Y-m-d H:i:s'),
             )
         );
@@ -51,13 +51,13 @@ class User extends AppModel {
         return $stat;
     }
 
-    public function insertTwitterUserInfo($me) {
+    public function insertTwitterUserInfo($me,$is_registered) {
         $data = array(
             'User' => array(
                 'tw_user_id' => $me->id,
                 'screen_name' => $me->screen_name,
                 'icon_url' => $me->profile_image_url,
-                'is_registered' => true,
+                'is_registered' => $is_registered,
             )
         );
         $stat = $this->save($data);
