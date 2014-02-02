@@ -62,6 +62,16 @@ echo $this->Html->link('Logout',
                     4.0 stars
                 </p>
             </div>
+            <div class="list-group">
+            <ul>
+            <?php foreach($tweets as $tweet):?>
+            <li>
+            <?php echo '@'.h($tweet['User']['screen_name']);?> <br>
+            <?php echo h($tweet['Tweet']['tweet']);?>
+            </li>
+            <?php endforeach;?>
+            </ul>
+            </div><!-- list-group -->
         </div><!-- thumnail -->
 
         <div class="well">

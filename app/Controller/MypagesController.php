@@ -2,6 +2,10 @@
 /* MypagesController */
 class MypagesController extends AppController {
 
+    public $uses = array(
+        'Tweet'
+    );
+
     // ログインチェック、オブジェクト作成
     public function beforeFilter() {
         $user = $this->Session->read('user');
@@ -15,12 +19,17 @@ class MypagesController extends AppController {
                 $this->Session->read('user.access_token.secret')
             );
         }
+
+        $me = $this->Session->read('me');
     }
 
 
     public function timeline() {
-       $this->layout = 'mypage';
-       $this->set('me',$this->Session->read('me')); 
+        $tweets = $this->Tweet->getTweets($this->Session->read('me'));
+        $this->set('tweets',$tweets);
+        $this->layout = 'mypage';
+        $this->set('me',$this->Session->read('me')); 
     }
+    
 
 }
