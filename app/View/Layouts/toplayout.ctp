@@ -55,6 +55,12 @@ $title_for_layout = 'Twoweeter';
 		<div id="content">
     -->
 
+<!-- JavaScript -->
+<?php echo $this->Html->script('jquery-1.10.2');?>
+<?php echo $this->Html->script('bootstrap');?>
+<!-- 本当は後ろで読み込みたいけど、contentの中に
+　　 どんなjsがくるかわからない。 -->
+
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
@@ -68,9 +74,6 @@ $title_for_layout = 'Twoweeter';
 
 	<?php echo $this->element('sql_dump'); ?>
 
-<!-- JavaScript -->
-<?php echo $this->Html->script('jquery-1.10.2');?>
-<?php echo $this->Html->script('bootstrap');?>
 
 </body>
 </html>

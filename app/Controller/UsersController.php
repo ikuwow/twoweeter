@@ -51,12 +51,13 @@ class UsersController extends AppController {
     
             // アクセストークンをゲット。基本的にこれで完了
             $access_token = $to->getAccessToken($_REQUEST['oauth_verifier']);
-            $this->Session->write('access_token',$access_token);
+            $this->Session->write('access_token',$access_token['oauth_token']);
+            $this->Session->write('access_token_secret',$access_token['oauth_token_secret']);
     
             $me = $to->get('account/verify_credentials');
             $this->Session->write('me',$me);
     
-            // 初回なら、DBに挿入しつつ取得
+            // 初回なら、基本データをDBに挿入しつつ取得、ほかはアップデート
             $is_saved = $this->User->find('count',array('conditions'=>array('tw_user_id'=>$me->id))); 
             if (!$is_saved) {
                 $stat = $this->User->insertTwitterUserInfo($me);
@@ -67,20 +68,32 @@ class UsersController extends AppController {
                 echo 'error!!';
                 die();
             }
-            /*
-            // ログイン処理
-            if(!empty($user)) {
-                // セッションハイジャック対策
-                session_regenerate_id(true);
-                $_SESSION['me'] = $me;
-            }
-             */
+
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
 
         }
     
     }
+
+    public function importTweet() {
+
+        // オブジェクト作成
+        $to = new TwitterOAuth(
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            $this->Session->read('access_token'),
+            $this->Session->read('access_token_secret')
+        );
+
+        $following = $to->get('friends/ids');
+        debug($following);
+
+        $this->set('following',$following);
+        //$this->render(array('controller'=>'mypages','action'=>'timeline'));
+        //$this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
+    }
+
     public function logout() {
         $this->Session->destroy();
         $this->redirect(array('controller'=>'tops','action'=>'index'));
