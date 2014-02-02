@@ -1,9 +1,32 @@
 
-<p>現在@<?php echo $me->screen_name;?>でログイン中</p>
-<?php
 
-echo $this->Html->link(
-    'Logout',
+<div class="row">
+
+    <!-- sidebar -->
+    <div class="col-md-4">
+        <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name));?>
+        <p class="lead">@<?php echo h($me->screen_name);?></p>
+        <div class="thumbnail">
+            <?php echo h($me->description);?>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Timeline</a>
+            <a href="#" class="list-group-item">Mentions (comming soon)</a>
+            <a href="#" class="list-group-item">Account (comming soon)</a>
+        </div>
+<?php
+echo $this->Html->link('Read tweet',
+    array(
+        'controller'=>'users',
+        'action'=>'importTweet'
+    ),
+    array(
+        'class'=>array('btn','btn-default','btn-lg')
+    )
+);
+?>
+<?php
+echo $this->Html->link('Logout',
     array(
         'controller'=>'users',
         'action'=>'logout'
@@ -13,18 +36,9 @@ echo $this->Html->link(
     )
 );
 ?>
+    </div><!-- col-md-4 -->
 
-<div class="row">
-
-    <div class="col-md-4">
-        <p class="lead">Shop Name</p>
-        <div class="list-group">
-            <a href="#" class="list-group-item active">Printable</a>
-            <a href="#" class="list-group-item">Cupcake Wrappers</a>
-            <a href="#" class="list-group-item">Authentic Dragon Bones</a>
-        </div>
-    </div>
-
+    <!-- main division -->
     <div class="col-md-8">
 
         <div class="thumbnail">
@@ -48,7 +62,7 @@ echo $this->Html->link(
                     4.0 stars
                 </p>
             </div>
-        </div>
+        </div><!-- thumnail -->
 
         <div class="well">
 
@@ -101,8 +115,8 @@ echo $this->Html->link(
                 </div>
             </div>
 
-        </div>
+        </div><!-- well -->
 
-    </div>
+    </div><!-- col-md-8 -->
 
-</div>
+</div><!-- row -->
