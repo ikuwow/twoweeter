@@ -59,27 +59,34 @@ class UsersController extends AppController {
     
             // アクセストークンをゲット。基本的にこれで完了
             $access_token = $to->getAccessToken($_REQUEST['oauth_verifier']);
-            $this->Session->write('access_token',$access_token['oauth_token']);
-            $this->Session->write('access_token_secret',$access_token['oauth_token_secret']);
+            // $this->Session->write('access_token',$access_token['oauth_token']);
+            // $this->Session->write('access_token_secret',$access_token['oauth_token_secret']);
 
-            // oauth_tokenを削除しておく
-            $this->Session->delete('oauth_token');
-            $this->Session->delete('oauth_token_secret');
-    
+            // 基本情報me
             $me = $to->get('account/verify_credentials');
             $this->Session->write('me',$me);
-    
-            // 初回なら、基本データをDBに挿入しつつ取得、ほかはアップデート
-            $is_saved = $this->User->find('count',array('conditions'=>array('tw_user_id'=>$me->id))); 
-            if (!$is_saved) {
+
+            // アクセスに必要な情報
+            $id = $this->User->getUserIdByTwitterUserId($me->id);
+            if (empty($id)) { // 初めての登録
                 $stat = $this->User->insertTwitterUserInfo($me,$access_token['oauth_token'],$access_token['oauth_token_secret']);
-            } else {
+                $id = $this->User->getUserIdByTwitterUserId($me->id);
+            } else { // 二回目以降
                 $stat = $this->User->updateTwitterUserInfo($me);
             }
             if (!$stat) {
                 echo 'error!!';
                 die();
             }
+            $tokens = $this->User->getAccessTokenById($id);
+
+            $this->Session->write('user.id',$id);
+            $this->Session->write('user.access_token',$tokens['User']['access_token']);
+            $this->Session->write('user.access_token_secret',$tokens['User']['access_token_secret']);
+    
+            // oauth_tokenを削除しておく
+            $this->Session->delete('oauth_token');
+            $this->Session->delete('oauth_token_secret');
 
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
 

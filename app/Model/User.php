@@ -4,6 +4,7 @@ class User extends AppModel {
 
     // twitterのユーザidからDBのユーザIDを引く
     public function getUserIdByTwitterUserId($tw_user_id) {
+        $data = array();
         $data = $this->find(
             'first',
             array(
@@ -63,9 +64,15 @@ class User extends AppModel {
     }
 
 
-    /*
     public function getAccessTokenById($id) {
+        return $this->find('first',array(
+            'conditions' => array(
+                'id' => $id,
+            ),
+            'fields' => array(
+                'access_token','access_token_secret'
+            ),
+            'limit' => 1
         ));
     }
-     */
 }
