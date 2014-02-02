@@ -46,12 +46,14 @@ class User extends AppModel {
         return $stat;
     }
 
-    public function insertTwitterUserInfo($me) {
+    public function insertTwitterUserInfo($me,$at,$ats) {
         $data = array(
             'User' => array(
                 'tw_user_id' => $me->id,
                 'screen_name' => $me->screen_name,
                 'icon_url' => $me->profile_image_url,
+                'access_token' => $at,
+                'access_token_secret' => $ats,
                 'is_registered' => true,
                 'last_login' => date('Y-m-d H:i:s'),
             )
@@ -59,4 +61,11 @@ class User extends AppModel {
         $stat = $this->save($data);
         return $stat;
     }
+
+
+    /*
+    public function getAccessTokenById($id) {
+        ));
+    }
+     */
 }

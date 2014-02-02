@@ -7,6 +7,8 @@ create table if not exists users (
     tw_user_id bigint unique not null,
     screen_name varchar(100) unique not null,
     icon_url varchar(100),
+    access_token varchar(100) not null,
+    access_token_secret varchar(100) not null,
     is_registered boolean not null default 0,
     last_login datetime,
     created datetime not null,

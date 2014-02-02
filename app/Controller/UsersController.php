@@ -60,7 +60,7 @@ class UsersController extends AppController {
             // 初回なら、基本データをDBに挿入しつつ取得、ほかはアップデート
             $is_saved = $this->User->find('count',array('conditions'=>array('tw_user_id'=>$me->id))); 
             if (!$is_saved) {
-                $stat = $this->User->insertTwitterUserInfo($me);
+                $stat = $this->User->insertTwitterUserInfo($me,$access_token['oauth_token'],$access_token['oauth_token_secret']);
             } else {
                 $stat = $this->User->updateTwitterUserInfo($me);
             }
