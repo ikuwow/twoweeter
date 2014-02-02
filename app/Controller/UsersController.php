@@ -113,10 +113,9 @@ class UsersController extends AppController {
         //debug($following_userinfo);
 
         foreach ($following_userinfo as $key=>$info) {
-            $this->User->insertTwitterUserInfo($info);
+            $this->User->saveTwitterUserInfo($info);
         }
 
-        /*
         foreach ($following->ids as $key=>$id) {
             $tweets[$key] = $to->get(
                 'statuses/user_timeline',
@@ -126,7 +125,7 @@ class UsersController extends AppController {
                 )
             );
         }
-         */
+        debug($tweets);
 
         //$this->set('tweets',$tweets);
         //$this->set('following',$following);

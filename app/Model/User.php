@@ -25,7 +25,7 @@ class User extends AppModel {
                 'id' => $me->id,
                 'screen_name' => $me->screen_name,
                 'icon_url' => $me->profile_image_url,
-                'is_registered' => $is_registered,
+                //'is_registered' => $is_registered,
                 'last_login' => date('Y-m-d H:i:s'),
             )
         );
