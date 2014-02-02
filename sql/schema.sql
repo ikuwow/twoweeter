@@ -7,12 +7,21 @@ create table if not exists users (
     tw_user_id bigint unique not null,
     screen_name varchar(100) unique not null,
     icon_url varchar(100),
-    access_token varchar(100) not null,
-    access_token_secret varchar(100) not null,
     is_registered boolean not null default 0,
-    last_login datetime,
     created datetime not null,
     modified datetime
+) engine = InnoDB default charset=utf8;
+
+# user_details
+create table if not exists user_details (
+    id int not null primary key auto_increment,
+    user_id int not null unique,
+    access_token varchar(100) not null,
+    access_token_secret varchar(100) not null,
+    last_login datetime,
+    created datetime not null,
+    modified datetime,
+    foreign key(user_id) references users(id)
 ) engine = InnoDB default charset=utf8;
 
 # follows

@@ -4,6 +4,7 @@ class UsersController extends AppController {
 
     public $uses = array(
         'User',
+        'UserDetail'
     );
 
     // Toppage
@@ -61,20 +62,23 @@ class UsersController extends AppController {
             // アクセスに必要な情報
             $id = $this->User->getUserIdByTwitterUserId($me->id);
             if (empty($id)) { // 初めての登録
-                $stat = $this->User->insertTwitterUserInfo($me,$access_token['oauth_token'],$access_token['oauth_token_secret']);
+                $stat = $this->User->insertTwitterUserInfo($me);
+                $id = $this->User->getLastInsertID();
+                $stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
                 $id = $this->User->getUserIdByTwitterUserId($me->id);
             } else { // 二回目以降
                 $stat = $this->User->updateTwitterUserInfo($me);
+                //$stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
             }
             if (!$stat) {
                 echo 'error!!';
                 die();
             }
-            $tokens = $this->User->getAccessTokenById($id);
 
+            $tokens = $this->UserDetail->getAccessTokenByUserId($id);
             $this->Session->write('user.id',$id);
-            $this->Session->write('user.access_token',$tokens['User']['access_token']);
-            $this->Session->write('user.access_token_secret',$tokens['User']['access_token_secret']);
+            $this->Session->write('user.access_token',$tokens['UserDetail']['access_token']);
+            $this->Session->write('user.access_token_secret',$tokens['UserDetail']['access_token_secret']);
     
             // oauth_tokenを削除しておく
             $this->Session->delete('oauth_token');
