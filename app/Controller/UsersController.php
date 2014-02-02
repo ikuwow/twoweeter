@@ -52,33 +52,33 @@ class UsersController extends AppController {
     
             // アクセストークンをゲット。基本的にこれで完了
             $access_token = $to->getAccessToken($_REQUEST['oauth_verifier']);
-            // $this->Session->write('access_token',$access_token['oauth_token']);
-            // $this->Session->write('access_token_secret',$access_token['oauth_token_secret']);
+            $this->Session->write('access_token',$access_token);
 
             // 基本情報me
             $me = $to->get('account/verify_credentials');
             $this->Session->write('me',$me);
 
             // アクセスに必要な情報
-            $id = $this->User->getUserIdByTwitterUserId($me->id);
-            if (empty($id)) { // 初めての登録
-                $stat = $this->User->insertTwitterUserInfo($me,true);
-                $id = $this->User->getLastInsertID();
-                $stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
-                $id = $this->User->getUserIdByTwitterUserId($me->id);
-            } else { // 二回目以降
-                $stat = $this->User->updateTwitterUserInfo($me,true);
-                //$stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
-            }
+            $stat = $this->User->saveTwitterUserInfo($me,true);
             if (!$stat) {
                 echo 'error!!';
                 die();
             }
+            $id = $me->id;
 
-            $tokens = $this->UserDetail->getAccessTokenByUserId($id);
+            // 初めてならアクセストークンをセーブ
+            $is_registered = $this->UserDetail->find('count',array(
+                'conditions'=>array(
+                    'user_id'=>$id
+                )
+            ));
+            if (!$is_registered) {
+                $stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
+            }
+
             $this->Session->write('user.id',$id);
-            $this->Session->write('user.access_token',$tokens['UserDetail']['access_token']);
-            $this->Session->write('user.access_token_secret',$tokens['UserDetail']['access_token_secret']);
+            $this->Session->write('user.access_token',$access_token['oauth_token']);
+            $this->Session->write('user.access_token_secret',$access_token['oauth_token_secret']);
     
             // oauth_tokenを削除しておく
             $this->Session->delete('oauth_token');
@@ -102,12 +102,34 @@ class UsersController extends AppController {
         );
 
         $following = $to->get('friends/ids');
-        $tweets = array();
-        foreach ($following->ids as $key=>$id) {
-            $tweets[$key] = $to->get('statuses/user_timeline',array('user_id'=>$id));
+        //$statuses[$key] = $to->get('users/lookup',array('user_id'=>$id));
+        $following_userinfo = $to->get(
+            'users/lookup',
+            array(
+                'user_id'=>implode($following->ids,',')
+            )
+        );
+
+        //debug($following_userinfo);
+
+        foreach ($following_userinfo as $key=>$info) {
+            $this->User->insertTwitterUserInfo($info);
         }
 
-        $this->set('following',$following);
+        /*
+        foreach ($following->ids as $key=>$id) {
+            $tweets[$key] = $to->get(
+                'statuses/user_timeline',
+                array(
+                    'user_id' => $id,
+                    'include_rts' => true,
+                )
+            );
+        }
+         */
+
+        //$this->set('tweets',$tweets);
+        //$this->set('following',$following);
         //$this->set('tweets',$tweets);
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     

@@ -17,7 +17,7 @@ class UserDetail extends AppModel {
         return $stat;
     }
 
-    public function getAccessTokenByUserId($user_id) {
+    public function getAccessTokenById($user_id) {
         return $this->find('first',array(
             'conditions' => array(
                 'user_id' => $user_id,
