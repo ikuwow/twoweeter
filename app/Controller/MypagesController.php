@@ -2,14 +2,19 @@
 /* MypagesController */
 class MypagesController extends AppController {
 
-    // オブジェクト作成
+    // ログインチェック、オブジェクト作成
     public function beforeFilter() {
-        $to = new TwitterOAuth(
-            CONSUMER_KEY,
-            CONSUMER_SECRET,
-            $this->Session->read('user.access_token'),
-            $this->Session->read('user.access_token.secret')
-        );
+        $user = $this->Session->read('user');
+        if (!isset($user)){
+            $this->redirect(array('controller'=>'tops','action'=>'index'));
+        } else {
+            $to = new TwitterOAuth(
+                CONSUMER_KEY,
+                CONSUMER_SECRET,
+                $this->Session->read('user.access_token'),
+                $this->Session->read('user.access_token.secret')
+            );
+        }
     }
 
 
