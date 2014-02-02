@@ -6,14 +6,6 @@ class UsersController extends AppController {
         'User',
     );
 
-    // これはMypagesControllerに書くべきだな。
-    public function beforeFilter() {
-        //if (isset($me)) {
-            //$at = $this
-            //$to = new TwitterOAuth(CONSUMER_KEY,CONSUMER_SECRET);
-        //}
-    }
-
     // Toppage
     public function index(){
     }
@@ -94,22 +86,26 @@ class UsersController extends AppController {
     
     }
 
+    // つぶやきを読み込む
     public function importTweet() {
 
         // オブジェクト作成
         $to = new TwitterOAuth(
             CONSUMER_KEY,
             CONSUMER_SECRET,
-            $this->Session->read('access_token'),
-            $this->Session->read('access_token_secret')
+            $this->Session->read('user.access_token'),
+            $this->Session->read('user.access_token_secret')
         );
 
         $following = $to->get('friends/ids');
-        debug($following);
+        $tweets = array();
+        foreach ($following->ids as $key=>$id) {
+            $tweets[$key] = $to->get('statuses/user_timeline',array('user_id'=>$id));
+        }
 
         $this->set('following',$following);
-        //$this->render(array('controller'=>'mypages','action'=>'timeline'));
-        //$this->redirect(array('controller'=>'mypages','action'=>'timeline'));
+        //$this->set('tweets',$tweets);
+        $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
     }
 
