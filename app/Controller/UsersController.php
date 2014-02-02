@@ -6,6 +6,14 @@ class UsersController extends AppController {
         'User',
     );
 
+    // これはMypagesControllerに書くべきだな。
+    public function beforeFilter() {
+        //if (isset($me)) {
+            //$at = $this
+            //$to = new TwitterOAuth(CONSUMER_KEY,CONSUMER_SECRET);
+        //}
+    }
+
     // Toppage
     public function index(){
     }
@@ -53,6 +61,10 @@ class UsersController extends AppController {
             $access_token = $to->getAccessToken($_REQUEST['oauth_verifier']);
             $this->Session->write('access_token',$access_token['oauth_token']);
             $this->Session->write('access_token_secret',$access_token['oauth_token_secret']);
+
+            // oauth_tokenを削除しておく
+            $this->Session->delete('oauth_token');
+            $this->Session->delete('oauth_token_secret');
     
             $me = $to->get('account/verify_credentials');
             $this->Session->write('me',$me);
