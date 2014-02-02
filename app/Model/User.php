@@ -17,8 +17,6 @@ class User extends AppModel {
     }
         
 
-    // idで引くのは、duplicationを自動で検出して
-    // insertかupdateか選択してくれるから。
     public function saveTwitterUserInfo($me,$is_registered=null) {
         $data = array(
             'User' => array(

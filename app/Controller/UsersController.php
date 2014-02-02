@@ -4,7 +4,8 @@ class UsersController extends AppController {
 
     public $uses = array(
         'User',
-        'UserDetail'
+        'UserDetail',
+        'Tweet'
     );
 
     // Toppage
@@ -114,22 +115,23 @@ class UsersController extends AppController {
 
         foreach ($following_userinfo as $key=>$info) {
             $this->User->saveTwitterUserInfo($info);
-        }
-
-        foreach ($following->ids as $key=>$id) {
-            $tweets[$key] = $to->get(
+            $tweets = $to->get(
                 'statuses/user_timeline',
                 array(
-                    'user_id' => $id,
+                    'user_id' => $info->id,
                     'include_rts' => true,
+                    'trim_user' => true
                 )
             );
+            $stat = $this->Tweet->saveTweetsByUserId($info->id,$tweets);
         }
-        debug($tweets);
+        if (!$stat) {
+            echo 'Some error occured in importing tweets.';
+            die();
+        }
+        //debug($tweets);
 
-        //$this->set('tweets',$tweets);
-        //$this->set('following',$following);
-        //$this->set('tweets',$tweets);
+        //$this->Session->setFlash('Reading Tweets Done!');
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
     }
