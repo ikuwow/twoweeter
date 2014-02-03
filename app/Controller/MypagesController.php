@@ -3,7 +3,9 @@
 class MypagesController extends AppController {
 
     public $uses = array(
-        'Tweet'
+        'Tweet',
+        'User',
+        'Follow'
     );
 
     // ログインチェック、オブジェクト作成
@@ -19,13 +21,19 @@ class MypagesController extends AppController {
                 $this->Session->read('user.access_token.secret')
             );
         }
-
+        // beforeFilterでは変数は受け継がれないようだ。
         $me = $this->Session->read('me');
     }
 
-
     public function timeline() {
-        $tweets = $this->Tweet->getTweets($this->Session->read('me'));
+        $me = $this->Session->read('me');
+        $followings = $this->Follow->getFollowingsByUserId($me->id);
+        $following_userid = array();
+        foreach ($followings as $following) {
+            $following_userid[] = $following['Follow']['following_user_id'];
+        }
+        $tweets = $this->Tweet->getTweetsByFollowingUserIds($following_userid);
+        //debug($tweets);
         $this->set('tweets',$tweets);
         $this->layout = 'mypage';
         $this->set('me',$this->Session->read('me')); 

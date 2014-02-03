@@ -5,7 +5,8 @@ class UsersController extends AppController {
     public $uses = array(
         'User',
         'UserDetail',
-        'Tweet'
+        'Tweet',
+        'Follow',
     );
 
     // Toppage
@@ -103,7 +104,10 @@ class UsersController extends AppController {
         );
 
         $followings = $to->get('friends/ids');
-        debug($followings);
+        $stat = $this->Follow->saveFollowings($this->Session->read('me'),$followings);
+        
+        //debug($followings);
+        // $this->Session->write('followings',$followings);
         //$statuses[$key] = $to->get('users/lookup',array('user_id'=>$id));
         $following_userinfos = $to->get(
             'users/lookup',
@@ -112,8 +116,7 @@ class UsersController extends AppController {
             )
         );
 
-        //foreach ($following as $key=>$f
-
+        $stat = true;
         foreach ($following_userinfos as $key=>$info) {
             $this->User->saveTwitterUserInfo($info);
             $tweets = $to->get(
@@ -124,7 +127,7 @@ class UsersController extends AppController {
                     'trim_user' => true
                 )
             );
-            $stat = $this->Tweet->saveTweetsByUserId($info->id,$tweets);
+            $stat = $stat && $this->Tweet->saveTweetsByUserId($info->id,$tweets);
         }
         if (!$stat) {
             echo 'Some error occured in importing tweets.';

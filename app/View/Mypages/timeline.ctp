@@ -42,6 +42,7 @@ echo $this->Html->link('Logout',
     <div class="col-md-8">
 
         <div class="thumbnail">
+            <?php /*
             <img class="img-responsive" src="http://placehold.it/800x300" alt="">
             <div class="caption-full">
                 <h4 class="pull-right">$24.99</h4>
@@ -62,20 +63,21 @@ echo $this->Html->link('Logout',
                     4.0 stars
                 </p>
             </div>
-            <div class="list-group">
-            <dl class="dl-horizontal">
+             */ ?>
+            <table class="table table-bordered table-hover">
+            <tbody>
             <?php foreach($tweets as $tweet):?>
-            <dt>
+            <tr><td>
             <?php echo '@'.h($tweet['User']['screen_name']);?> <br>
-            </dt>
-            <dd>
+            </td><td>
             <?php echo h($tweet['Tweet']['tweet']);?>
-            </dd>
+            </td></tr>
             <?php endforeach;?>
-            </dl>
-            </div><!-- list-group -->
+            </tbody>
+            </table>
         </div><!-- thumnail -->
 
+        <?php /*
         <div class="well">
 
             <div class="text-right">
@@ -128,6 +130,7 @@ echo $this->Html->link('Logout',
             </div>
 
         </div><!-- well -->
+         */ ?>
 
     </div><!-- col-md-8 -->
 

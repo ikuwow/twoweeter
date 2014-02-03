@@ -26,9 +26,9 @@ create table if not exists user_details (
 # follows
 # drop table if exists follows; 
 create table if not exists follows (
-    id int not null primary key auto_increment,
-    user_id int not null,
-    following_user_id int not null
+    id bigint not null primary key auto_increment,
+    user_id bigint not null,
+    following_user_id bigint not null
 ) engine=InnoDB default charset=utf8;
 
 # tweets

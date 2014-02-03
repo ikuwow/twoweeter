@@ -19,6 +19,38 @@ class Tweet extends AppModel {
         return $tweets;
     }
 
+    public function getTweetsByFollowingUserIds($following_user_ids) {
+        $options = array(
+            'conditions' => array(
+                'Tweet.user_id' => $following_user_ids
+            ),
+            'limit' => 100,
+            'fields' => array(
+                'User.screen_name',
+                'Tweet.tweet',
+                'Tweet.tweet_date'
+            ),
+            'order' => 'Tweet.tweet_date DESC'
+        );
+        $tweets = $this->find('all',$options);
+        return $tweets;
+    }
+    
+    // このアプリで一番重要なメソッド
+    /*
+    public function getFollowingTweets($me) {
+        // Follow => User => Tweetと取ってくる。
+        $options = array(
+            'conditions' => array(
+            ),
+            'limit' => 100
+            'fields' => array('User.screen_name','Tweet.tweet',
+        );
+        $tweets = $this->find('all',$options);
+        return $tweets;
+    }
+     */
+
     public function saveTweetByUserId($user_id,$tweet) {
         // 日本時間に変更
         $td = date('Y-m-d H:i:s',strtotime($tweet->created_at)+32400);
