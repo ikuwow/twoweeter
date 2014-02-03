@@ -102,18 +102,19 @@ class UsersController extends AppController {
             $this->Session->read('user.access_token_secret')
         );
 
-        $following = $to->get('friends/ids');
+        $followings = $to->get('friends/ids');
+        debug($followings);
         //$statuses[$key] = $to->get('users/lookup',array('user_id'=>$id));
-        $following_userinfo = $to->get(
+        $following_userinfos = $to->get(
             'users/lookup',
             array(
-                'user_id'=>implode($following->ids,',')
+                'user_id'=>implode($followings->ids,',')
             )
         );
 
-        //debug($following_userinfo);
+        //foreach ($following as $key=>$f
 
-        foreach ($following_userinfo as $key=>$info) {
+        foreach ($following_userinfos as $key=>$info) {
             $this->User->saveTwitterUserInfo($info);
             $tweets = $to->get(
                 'statuses/user_timeline',
@@ -129,7 +130,6 @@ class UsersController extends AppController {
             echo 'Some error occured in importing tweets.';
             die();
         }
-        //debug($tweets);
 
         //$this->Session->setFlash('Reading Tweets Done!');
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));

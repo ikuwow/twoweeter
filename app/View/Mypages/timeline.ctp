@@ -63,14 +63,16 @@ echo $this->Html->link('Logout',
                 </p>
             </div>
             <div class="list-group">
-            <ul>
+            <dl class="dl-horizontal">
             <?php foreach($tweets as $tweet):?>
-            <li>
+            <dt>
             <?php echo '@'.h($tweet['User']['screen_name']);?> <br>
+            </dt>
+            <dd>
             <?php echo h($tweet['Tweet']['tweet']);?>
-            </li>
+            </dd>
             <?php endforeach;?>
-            </ul>
+            </dl>
             </div><!-- list-group -->
         </div><!-- thumnail -->
 

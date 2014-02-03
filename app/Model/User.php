@@ -6,6 +6,10 @@ class User extends AppModel {
         'UserDetail'
     );
 
+    public $hasMany = array(
+        'Follow'
+    );
+
     public function getUserById($id) {
         $options = array(
             'conditions' => array(
