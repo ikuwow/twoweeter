@@ -36,6 +36,26 @@ class Tweet extends AppModel {
         $tweets = $this->find('all',$options);
         return $tweets;
     }
+
+    // 一番大事なメソッド
+    public function getTweets2weeksAgoByFollowingUserIds ($following_user_ids) {
+        $options = array(
+            'conditions' => array(
+                'Tweet.user_id' => $following_user_ids,
+                'Tweet.tweet_date <=' => date('Y-m-d H:i:s',strtotime('-2 week'))
+            ),
+            'limit' => 100,
+            'fields' => array(
+                'User.screen_name',
+                'User.icon_url',
+                'Tweet.tweet',
+                'Tweet.tweet_date'
+            ),
+            'order' => 'Tweet.tweet_date DESC'
+        );
+        $tweets = $this->find('all',$options);
+        return $tweets;
+    }
     
     // このアプリで一番重要なメソッド
     /*

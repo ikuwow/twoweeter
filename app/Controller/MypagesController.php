@@ -33,7 +33,8 @@ class MypagesController extends AppController {
         foreach ($followings as $following) {
             $following_userid[] = $following['Follow']['following_user_id'];
         }
-        $tweets = $this->Tweet->getTweetsByFollowingUserIds($following_userid);
+        // $tweets = $this->Tweet->getTweetsByFollowingUserIds($following_userid);
+        $tweets = $this->Tweet->getTweets2weeksAgoByFollowingUserIds($following_userid);
         $this->set('tweets',$tweets);
         $this->layout = 'mypage';
         $this->set('me',$this->Session->read('me')); 

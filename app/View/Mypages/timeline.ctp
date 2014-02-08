@@ -1,5 +1,5 @@
 
-
+<?php //debug($tweets);?>
 <div class="row">
 
     <!-- sidebar -->
@@ -77,7 +77,7 @@ echo $this->Html->link('Logout',
             <?php echo $this->Html->image($tweet['User']['icon_url']);?>
             <?php echo '@'.h($tweet['User']['screen_name']);?>
             </td><td>
-            <?php echo h($tweet['Tweet']['tweet']);?>
+                <?php echo h($tweet['Tweet']['tweet']);?><br><?php echo h($tweet['Tweet']['tweet_date']);?>
             </td></tr>
             <?php endforeach;?>
             </tbody>
