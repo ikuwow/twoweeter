@@ -24,6 +24,11 @@ class Follow extends AppModel {
                 )
             );
         }
-        return $this->saveAll($data);
+        $stat = $this->saveAll($data);
+        // 重複を削除、うまいやり方はないのか・・・。
+        // 入れるときに取り除くor入れてから取り除く。
+        // select * from follow where user_id=:user_id group by
+        //      following_user_id having count(id) > 1;
+        return $stat;
     }
 }
