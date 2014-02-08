@@ -36,7 +36,7 @@ create table if not exists follows (
 create table if not exists tweets (
     id bigint unsigned not null primary key,
     user_id int not null,
-    tweet varchar(140) not null,
+    tweet varchar(145) not null,
     is_tweeted boolean not null default 0,
     tweet_date datetime not null,
     created datetime not null,
