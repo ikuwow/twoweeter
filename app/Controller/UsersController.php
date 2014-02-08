@@ -123,6 +123,7 @@ class UsersController extends AppController {
                 'statuses/user_timeline',
                 array(
                     'user_id' => $info->id,
+                    'count' => 100,
                     'include_rts' => true,
                     'trim_user' => true
                 )
