@@ -7,7 +7,11 @@
         <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name));?>
         <p class="lead">@<?php echo h($me->screen_name);?></p>
         <div class="thumbnail">
-            <?php echo h($me->description);?>
+        <table class="table">
+        <tbody>
+        <tr><td><?php echo h($me->description);?></td></tr>
+        </tbody>
+        </table>
         </div>
         <div class="list-group">
             <a href="#" class="list-group-item active">Timeline</a>
@@ -25,6 +29,7 @@ echo $this->Html->link('Read tweet',
     )
 );
 ?>
+<div style="float: right;">
 <?php
 echo $this->Html->link('Logout',
     array(
@@ -36,6 +41,7 @@ echo $this->Html->link('Logout',
     )
 );
 ?>
+</div>
     </div><!-- col-md-4 -->
 
     <!-- main division -->
@@ -68,7 +74,8 @@ echo $this->Html->link('Logout',
             <tbody>
             <?php foreach($tweets as $tweet):?>
             <tr><td>
-            <?php echo '@'.h($tweet['User']['screen_name']);?> <br>
+            <?php echo $this->Html->image($tweet['User']['icon_url']);?>
+            <?php echo '@'.h($tweet['User']['screen_name']);?>
             </td><td>
             <?php echo h($tweet['Tweet']['tweet']);?>
             </td></tr>
