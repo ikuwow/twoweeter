@@ -50,8 +50,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h2>Subtle Sidebar is the Perfect Template for your Next Portfolio Website Project!</h2>
-                <p class="lead">This template really has it all. It's up to you to customize it to your liking! It features some fresh photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+                <h2>Twoweeterは、2週間前のあなたのツイッターのタイムラインを表示するサービスです。</h2>
+                <p class="lead">過去のツイートを、まるで今眺めているかのように閲覧できます。</p>
             </div>
         </div>
     </div>
