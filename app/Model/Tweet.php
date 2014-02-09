@@ -47,6 +47,7 @@ class Tweet extends AppModel {
             'limit' => 100,
             'fields' => array(
                 'User.screen_name',
+                'User.name',
                 'User.icon_url',
                 'Tweet.tweet',
                 'Tweet.tweet_date'
