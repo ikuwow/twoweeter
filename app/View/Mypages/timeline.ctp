@@ -4,6 +4,7 @@
 
     <!-- sidebar -->
     <div class="col-md-4">
+    <div class="affix"><?php // affixで固定 ?>
         <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name));?>
         <p class="lead">@<?php echo h($me->screen_name);?></p>
         <div class="thumbnail">
@@ -14,7 +15,7 @@
         </table>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item active">Timeline</a>
+            <a href="#" class="list-group-item active">Timeline (some may not be displayed now...)</a>
             <a href="#" class="list-group-item">Mentions (comming soon)</a>
             <a href="#" class="list-group-item">Account (comming soon)</a>
         </div>
@@ -29,19 +30,21 @@ echo $this->Html->link('Read tweet',
     )
 );
 ?>
-<div style="float: right;">
+<!--<div style="float: right;">-->
+<div style="position: absolute; right:0;bottom:5px;">
 <?php
 echo $this->Html->link('Logout',
     array(
         'controller'=>'users',
         'action'=>'logout'
-    ),
-    array(
-        'class'=>array('btn','btn-warning','btn-lg')
     )
+    /*array(
+        'class'=>array('btn','btn-warning','btn-lg')
+    )*/
 );
 ?>
 </div>
+    </div><!-- sidebar-navi affix-->
     </div><!-- col-md-4 -->
 
     <!-- main division -->
