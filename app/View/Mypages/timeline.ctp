@@ -4,7 +4,7 @@
 
     <!-- sidebar -->
     <div class="col-md-4">
-    <div class="affix"><?php // affixで固定 ?>
+    <?php //<div class="affix">?><?php // affixで固定 ?>
         <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name));?>
         <p class="lead"><?php echo h($me->name);?></p>
         <p class="lead">@<?php echo h($me->screen_name);?></p>
@@ -32,7 +32,7 @@ echo $this->Html->link('Read tweet',
 );
 ?>
 <!--<div style="float: right;">-->
-<div style="position: absolute; right:0;bottom:5px;">
+<div style="position: absolute; right:10px;bottom:5px;">
 <?php
 echo $this->Html->link('Logout',
     array(
@@ -45,7 +45,7 @@ echo $this->Html->link('Logout',
 );
 ?>
 </div>
-    </div><!-- sidebar-navi affix-->
+<?php //</div><!-- sidebar-navi affix--> ?>
     </div><!-- col-md-4 -->
 
     <!-- main division -->

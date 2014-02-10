@@ -31,4 +31,9 @@ class Follow extends AppModel {
         //      following_user_id having count(id) > 1;
         return $stat;
     }
+
+    /*
+    public function deleteDuplicateFollowings() {
+    }
+     */
 }
