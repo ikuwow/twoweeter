@@ -66,19 +66,24 @@ class UsersController extends AppController {
                 echo 'error!!';
                 die();
             }
-            $id = $me->id;
 
-            // 初めてならアクセストークンをセーブ
-            $is_registered = $this->UserDetail->find('count',array(
-                'conditions'=>array(
-                    'user_id'=>$id
-                )
+            // UserDetailのidを取得（初回判定など）
+            $user_detail_id = $this->UserDetail->find('count',array(
+                'conditions'=>array('user_id'=>$me->id)
             ));
-            if (!$is_registered) {
-                $stat = $this->UserDetail->saveAccessTokens($id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
-            }
 
-            $this->Session->write('user.id',$id);
+            // 初回ならアクセストークンをセーブ
+            if (!$user_detail_id) {
+                $stat = $this->UserDetail->saveAccessTokens($me->id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
+                $user_detail_id = $this->UserDetail->getLastInsertID();
+                // ここで、初回のツイート読み込みをさせたい
+            }
+            // ログイン時刻を更新
+            $data = array('UserDetail'=>array('id'=>$user_detail_id,'last_login'=>date('Y-m-d H:i:s')));
+            $this->UserDetail->save($data,false,array('last_login'));
+
+            // セッション書き込み
+            $this->Session->write('user.id',$me->id);
             $this->Session->write('user.access_token',$access_token['oauth_token']);
             $this->Session->write('user.access_token_secret',$access_token['oauth_token_secret']);
     
