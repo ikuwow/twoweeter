@@ -47,13 +47,6 @@ $title_for_layout = 'Twoweeter';
 	?>
 </head>
 <body>
-    <!--
-	<div id="container">
-		<div id="header">
-			<h1>Twoweeter</h1>
-		</div>
-		<div id="content">
-    -->
 
 <!-- JavaScript -->
 <?php echo $this->Html->script('jquery-1.10.2');?>
@@ -64,12 +57,7 @@ $title_for_layout = 'Twoweeter';
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-    <!--
-		</div>
-		<div id="footer">
-		</div>
-	</div>
-    -->
+
     <?php echo $this->element('footer');?>
 
 	<?php echo $this->element('sql_dump'); ?>

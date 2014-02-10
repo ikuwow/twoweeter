@@ -7,17 +7,17 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a>
+        <li class="sidebar-brand"><a href="">Twoweeter</a>
         </li>
         <li><a href="#top">Home</a>
         </li>
         <li><a href="#about">About</a>
         </li>
-        <li><a href="#services">Services</a>
+        <li><a href="#services">What's Twoweeter</a>
         </li>
         <li><a href="#portfolio">Portfolio</a>
         </li>
-        <li><a href="#contact">Contact</a>
+        <li><a href="http://www.ikuwow.com">www.ikuwow.com</a>
         </li>
     </ul>
 </div>
@@ -26,8 +26,8 @@
 <!-- Full Page Image Header Area -->
 <div id="top" class="header">
     <div class="vert-text">
-        <h1>Twoweeter</h1>
-        <h3>See your timeline <em>two weeks ago</em>.</h3>
+        <h1 style="color:white;text-shadow:0px 1px 3px #327FCD;">Twoweeter</h1>
+        <h3 style="color:white;text-shadow:0px 1px 3px #327FCD;">See your timeline <em>two weeks ago</em>.</h3>
         <?php
         echo $this->Html->link(
             'Twitterアカウントでログイン',
@@ -63,36 +63,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4 text-center">
-                <h2>Our Services</h2>
+                <h2>What's Twoweeter</h2>
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-2 text-center">
                 <div class="service-item">
-                    <i class="service-icon fa fa-rocket"></i>
-                    <h4>Spacecraft Repair</h4>
+                    <i class="service-icon fa fa-twitter"></i>
+                    <h4>Viewing Past Tweets</h4>
                     <p>Did your navigation system shut down in the middle of that asteroid field? We can repair any dings and scrapes to your spacecraft!</p>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
-                    <i class="service-icon fa fa-magnet"></i>
-                    <h4>Problem Solving</h4>
+                    <i class="service-icon fa fa-clock-o"></i>
+                    <h4>Like a Time Machine</h4>
                     <p>Need to know how magnets work? Our problem solving solutions team can help you identify problems and conduct exploratory research.</p>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
-                    <i class="service-icon fa fa-shield"></i>
-                    <h4>Blacksmithing</h4>
+                    <i class="service-icon fa fa-lightbulb-o"></i>
+                    <h4>Awakening</h4>
                     <p>Planning a time travel trip to the middle ages? Preserve the space time continuum by blending in with period accurate armor and weapons.</p>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
-                    <i class="service-icon fa fa-pencil"></i>
-                    <h4>Pencil Sharpening</h4>
+                    <i class="service-icon fa fa-reply"></i>
+                    <h4>Reply to Missed Tweets</h4>
                     <p>We've been voted the best pencil sharpening service for 10 consecutive years. If you have a pencil that feels dull, we'll get it sharp!</p>
                 </div>
             </div>
@@ -104,7 +104,7 @@
 <!-- Callout -->
 <div class="callout">
     <div class="vert-text">
-        <h1>A Dramatic Text Area</h1>
+        <h1>Time is the only true purgatory.</h1>
     </div>
 </div>
 <!-- /Callout -->
@@ -124,7 +124,7 @@
                     <a href="#">
                         <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
                     </a>
-                    <h4>Cityscape</h4>
+                    <h4>Earthquakes?</h4>
                 </div>
             </div>
             <div class="col-md-4 text-center">
@@ -132,7 +132,7 @@
                     <a href="#">
                         <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
                     </a>
-                    <h4>Is That On Fire?</h4>
+                    <h4>Big News?</h4>
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@
                     <a href="#">
                         <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
                     </a>
-                    <h4>Stop Sign</h4>
+                    <h4>Wait.</h4>
                 </div>
             </div>
             <div class="col-md-4 text-center">
@@ -150,7 +150,7 @@
                     <a href="#">
                         <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
                     </a>
-                    <h4>Narrow Focus</h4>
+                    <h4>There were good tips.</h4>
                 </div>
             </div>
         </div>
