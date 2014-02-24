@@ -21,8 +21,34 @@ footer {
   margin: 50px 0;
 }
 
+/* sidebar */
+div.side-button-box {
+    margin-bottom: 20px;
+}
+
+span.side-logout {
+    width: 45px;
+    float: right;
+}
+
+/* tweets */
 .icon {
     width: 48px;
     height: 48px;
     border-radius: 5px;
+    float: left;
+    margin-right: 5px;
 }
+
+div.content {
+    margin-left: 53px;
+}
+
+span.fullname {
+    font-weight: bold;
+}
+
+span.tweet-date {
+    font-weight: lighter;
+}
+

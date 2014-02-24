@@ -19,7 +19,8 @@
             <a href="#" class="list-group-item active">Timeline (some may not be displayed now...)</a>
             <a href="#" class="list-group-item">Mentions (comming soon)</a>
             <a href="#" class="list-group-item">Account (comming soon)</a>
-        </div>
+        </div><!-- list-group -->
+<div class="side-button-box">
 <?php
 echo $this->Html->link('Read tweet',
     array(
@@ -31,8 +32,7 @@ echo $this->Html->link('Read tweet',
     )
 );
 ?>
-<!--<div style="float: right;">-->
-<div style="position: absolute; right:10px;bottom:5px;">
+<span class="side-logout">
 <?php
 echo $this->Html->link('Logout',
     array(
@@ -44,8 +44,8 @@ echo $this->Html->link('Logout',
     )*/
 );
 ?>
-</div>
-<?php //</div><!-- sidebar-navi affix--> ?>
+</span>
+        </div><!-- side-button-box -->
     </div><!-- col-md-4 -->
 
     <!-- main division -->
@@ -75,14 +75,19 @@ echo $this->Html->link('Logout',
             </div>
              */ ?>
             <table class="table table-bordered table-hover">
+            <thead>
+            <th>Tweets</th>
+            </thead>
             <tbody>
             <?php foreach($tweets as $tweet):?>
             <tr><td>
-            <?php echo $this->Html->image($tweet['User']['icon_url'],array('class'=>'icon'));?><br/>
-            <?php echo h($tweet['User']['name']);?>
-            <?php echo '@'.h($tweet['User']['screen_name']);?>
-            </td><td>
-                <?php echo h($tweet['Tweet']['tweet']);?><br><?php echo h($tweet['Tweet']['tweet_date']);?>
+            <?php echo $this->Html->image($tweet['User']['icon_url'],array('class'=>'icon'));?>
+            <div class="content">
+            <span class="fullname"><?php echo h($tweet['User']['name']);?></span>
+            <span class="username"><?php echo '@'.h($tweet['User']['screen_name']);?></span>
+            <span class="tweet-date"><?php echo h($tweet['Tweet']['tweet_date']);?></span>
+            <p><?php echo h($tweet['Tweet']['tweet']);?></p>
+            </div>
             </td></tr>
             <?php endforeach;?>
             </tbody>
