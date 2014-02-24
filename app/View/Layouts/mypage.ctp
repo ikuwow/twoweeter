@@ -16,7 +16,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$title_for_layout = 'Twoweeter';
+$title_for_layout = 'Twoweeter: timeline';
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $title_for_layout = 'Twoweeter';
 		//echo $this->Html->css('cake.generic');
         echo $this->Html->css('bootstrap');
         echo $this->Html->css('font-awesome/css/font-awesome.min.css');
-        echo $this->Html->css('shop-item');
+        echo $this->Html->css('mypage');
 
         /* ブロックの呼び出し。
             デフォルトだと何も指定されていないため、動作しない。
@@ -93,7 +93,7 @@ $title_for_layout = 'Twoweeter';
     </div>
     <!-- /.container -->
 
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 
 <!-- JavaScript -->
 <?php echo $this->Html->script('jquery-1.10.2');?>
