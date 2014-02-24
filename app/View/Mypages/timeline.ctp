@@ -1,4 +1,4 @@
-
+<!-- timeline.ctp -->
 <?php //debug($tweets);?>
 <div class="row">
 
@@ -78,7 +78,7 @@ echo $this->Html->link('Logout',
             <tbody>
             <?php foreach($tweets as $tweet):?>
             <tr><td>
-            <?php echo $this->Html->image($tweet['User']['icon_url']);?>
+            <?php echo $this->Html->image($tweet['User']['icon_url'],array('class'=>'icon'));?><br/>
             <?php echo h($tweet['User']['name']);?>
             <?php echo '@'.h($tweet['User']['screen_name']);?>
             </td><td>
