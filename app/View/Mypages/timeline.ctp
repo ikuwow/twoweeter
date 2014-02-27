@@ -5,9 +5,9 @@
     <!-- sidebar -->
     <div class="col-md-4">
     <?php //<div class="affix">?><?php // affixで固定 ?>
-        <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name));?>
-        <p class="lead"><?php echo h($me->name);?></p>
-        <p class="lead">@<?php echo h($me->screen_name);?></p>
+        <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name,'class'=>'icon'));?>
+        <p class="lead fullname"><?php echo $this->Html->link(h($me->name),'http://twitter.com/'.$me->screen_name,array('target'=>'_blank'));?></p>
+        <p class="lead username"><?php echo $this->Html->link('@'.h($me->screen_name),'http://twitter.com/'.$me->screen_name,array('target'=>'_blank'));?></p>
         <div class="thumbnail">
         <table class="table">
         <tbody>
@@ -80,15 +80,15 @@ echo $this->Html->link('Logout',
             </thead>
             <tbody>
             <?php foreach($tweets as $tweet):?>
-            <tr><td>
+            <tr><td> <!-- tweet -->
             <?php echo $this->Html->image($tweet['User']['icon_url'],array('class'=>'icon'));?>
             <div class="content">
-            <span class="fullname"><?php echo h($tweet['User']['name']);?></span>
-            <span class="username"><?php echo '@'.h($tweet['User']['screen_name']);?></span>
+            <span class="fullname"><?php echo $this->Html->link(h($tweet['User']['name']),'http://twitter.com/'.$tweet['User']['screen_name'],array('target'=>'_blank'));?></span>
+            <span class="username"><?php echo $this->Html->link('@'.h($tweet['User']['screen_name']),'http://twitter.com/'.$tweet['User']['screen_name'],array('target'=>'_blank'));?></span>
             <span class="tweet-date"><?php echo h($tweet['Tweet']['tweet_date']);?></span>
             <p><?php echo h($tweet['Tweet']['tweet']);?></p>
             </div>
-            </td></tr>
+            </td></tr> <!-- tweet -->
             <?php endforeach;?>
             </tbody>
             </table>

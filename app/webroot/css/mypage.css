@@ -48,8 +48,12 @@ div.content {
 span.fullname {
     font-weight: bold;
 }
+.fullname a, .username a {
+    color: black;
+}
 
 span.tweet-date {
     font-weight: lighter;
 }
+
 
