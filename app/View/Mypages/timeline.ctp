@@ -3,8 +3,7 @@
 <div class="row">
 
     <!-- sidebar -->
-    <div class="col-md-4">
-    <?php //<div class="affix">?><?php // affixで固定 ?>
+    <div id="sidebar" class="col-md-4">
         <?php echo $this->Html->image($me->profile_image_url,array('title'=>$me->screen_name,'alt'=>$me->screen_name,'class'=>'icon'));?>
         <p class="lead fullname"><?php echo $this->Html->link(h($me->name),'http://twitter.com/'.$me->screen_name,array('target'=>'_blank'));?></p>
         <p class="lead username"><?php echo $this->Html->link('@'.h($me->screen_name),'http://twitter.com/'.$me->screen_name,array('target'=>'_blank'));?></p>
@@ -16,40 +15,40 @@
         </table>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item active">Timeline (some may not be displayed now...)</a>
+            <a href="#" class="list-group-item active">Timeline</a>
             <a href="#" class="list-group-item">Mentions (comming soon)</a>
             <a href="#" class="list-group-item">Account (comming soon)</a>
         </div><!-- list-group -->
-<div class="side-button-box">
-<?php
-echo $this->Html->link('Read tweet',
-    array(
-        'controller'=>'users',
-        'action'=>'importTweet'
-    ),
-    array(
-        'class'=>array('btn','btn-default','btn-lg')
-    )
-);
-?>
-<span class="side-logout">
-<?php
-echo $this->Html->link('Logout',
-    array(
-        'controller'=>'users',
-        'action'=>'logout'
-    )
-    /*array(
-        'class'=>array('btn','btn-warning','btn-lg')
-    )*/
-);
-?>
-</span>
+            <div class="side-button-box">
+            <?php
+            echo $this->Html->link('Read tweet',
+                array(
+                    'controller'=>'users',
+                    'action'=>'importTweet'
+                ),
+                array(
+                    'class'=>array('btn','btn-default','btn-lg')
+                )
+            );
+            ?>
+            <span class="side-logout">
+            <?php
+            echo $this->Html->link('Logout',
+                array(
+                    'controller'=>'users',
+                    'action'=>'logout'
+                )
+                /*array(
+                    'class'=>array('btn','btn-warning','btn-lg')
+                )*/
+            );
+            ?>
+            </span>
         </div><!-- side-button-box -->
     </div><!-- col-md-4 -->
 
     <!-- main division -->
-    <div class="col-md-8">
+    <div id="main" class="col-md-8">
 
         <div class="thumbnail">
             <?php /*
