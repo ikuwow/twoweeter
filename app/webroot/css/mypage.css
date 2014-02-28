@@ -27,11 +27,16 @@ div#main {
 }
 
 /* sidebar */
+/*
 div#sidebar {
 }
 div.sidebar-fixed {
     position: fixed;
+    top: 10px;
+    width: 100%;
+    z-index: 1000000;
 }
+*/
 
 div.side-button-box {
     margin-bottom: 20px;

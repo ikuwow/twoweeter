@@ -1,5 +1,4 @@
 <!-- timeline.ctp -->
-<?php //debug($tweets);?>
 <div class="row">
 
     <!-- sidebar -->
@@ -151,3 +150,6 @@
     </div><!-- col-md-8 -->
 
 </div><!-- row -->
+
+<!-- JavaScript -->
+<?php //echo $this->Html->script('sidebar');?>
