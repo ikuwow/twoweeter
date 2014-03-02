@@ -5,7 +5,8 @@ class MypagesController extends AppController {
     public $uses = array(
         'Tweet',
         'User',
-        'Follow'
+        'Follow',
+        'UserDetail'
     );
 
     public $to;
@@ -37,6 +38,8 @@ class MypagesController extends AppController {
         $this->set('tweets',$tweets);
         $this->layout = 'mypage';
         $this->set('me',$this->Session->read('me')); 
+
+        debug($this->UserDetail->findById(1));
     }
     
 

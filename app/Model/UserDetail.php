@@ -2,7 +2,8 @@
 class UserDetail extends AppModel {
 
     public $belongsTo = array(
-        'User'
+        'User',
+        'Timezone'
     );
 
     public function saveAccessTokens($user_id,$at,$atc) {
