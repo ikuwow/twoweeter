@@ -12,16 +12,28 @@ create table if not exists users (
     modified datetime
 ) engine = InnoDB default charset=utf8;
 
+# timezones
+# drop table if exists timezones;
+create table if not exists timezones (
+    id tinyint unsigned not null primary key auto_increment,
+    name varchar(64) not null unique,
+    utc_offset int not null,
+    created datetime not null,
+    modified datetime
+) engine = InnoDB default charset=utf8;
+
 # user_details
 create table if not exists user_details (
     id bigint unsigned not null primary key auto_increment,
     user_id bigint unsigned not null unique,
     access_token varchar(100) not null,
     access_token_secret varchar(100) not null,
+    timezone_id tinyint unsigned,
     last_login datetime,
     created datetime not null,
     modified datetime,
-    foreign key(user_id) references users(id)
+    foreign key(user_id) references users(id),
+    foreign key(timezone_id) references timezones(id)
 ) engine = InnoDB default charset=utf8;
 
 # follows
