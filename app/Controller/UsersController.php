@@ -7,6 +7,7 @@ class UsersController extends AppController {
         'UserDetail',
         'Tweet',
         'Follow',
+        'Timezone'
     );
 
     // Toppage
@@ -67,20 +68,30 @@ class UsersController extends AppController {
                 die();
             }
 
+            // Timezoneを設定
+            $settings = $to->get('account/settings');
+            // $this->Session->write('settings',$settings);
+
             // UserDetailのidを取得（初回判定など）
             $user_detail_id = $this->UserDetail->find('count',array(
-                'conditions'=>array('user_id'=>$me->id)
+                'conditions' => array('user_id'=>$me->id)
             ));
 
-            // 初回ならアクセストークンをセーブ
+            // 初回ならアクセストークン、timezoneをセーブ
             if (!$user_detail_id) {
-                $stat = $this->UserDetail->saveAccessTokens($me->id,$access_token['oauth_token'],$access_token['oauth_token_secret']);
-                $user_detail_id = $this->UserDetail->getLastInsertID();
+                $this->UserDetail->registerImport(
+                    $me->id,
+                    $access_token['oauth_token'],
+                    $access_token['oauth_token_secret'],
+                    $settings->time_zone->name,
+                    $settings->time_zone->utc_offset
+                );
+                // $user_detail_id = $this->UserDetail->getLastInsertID();
                 // ここで、初回のツイート読み込みをさせたい
             }
             // ログイン時刻を更新
             $data = array('UserDetail'=>array('id'=>$user_detail_id,'last_login'=>date('Y-m-d H:i:s')));
-            $this->UserDetail->save($data,false,array('last_login'));
+            // $this->UserDetail->save($data,false,array('last_login'));
 
             // セッション書き込み
             $this->Session->write('user.id',$me->id);

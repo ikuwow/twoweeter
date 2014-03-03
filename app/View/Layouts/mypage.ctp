@@ -97,6 +97,7 @@ $title_for_layout = 'Twoweeter: timeline';
         <?php echo $this->element('footer');?>
     </div>
     <!-- /.container -->
+	<?php echo $this->element('sql_dump'); ?>
 
 </body>
 </html>

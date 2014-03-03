@@ -6,18 +6,26 @@ class UserDetail extends AppModel {
         'Timezone'
     );
 
-    public function saveAccessTokens($user_id,$at,$atc) {
+    /**
+     */
+    public function registerImport($user_id,$at,$atc,$tname,$toffset) {
         $data = array(
             'UserDetail' => array(
                 'user_id' => $user_id,
                 'access_token' => $at,
-                'access_token_secret' => $atc,
-            )
+                'access_token_secret' => $atc
+            ),
+            'Timezone' => array(
+                'name' => $tname,
+                'utc_offset' => $toffset
+            ),
         );
-        $stat = $this->save($data);
+        $stat = $this->saveAssociated($data);
         return $stat;
     }
 
+    /**
+     */
     public function getAccessTokenById($user_id) {
         return $this->find('first',array(
             'conditions' => array(
