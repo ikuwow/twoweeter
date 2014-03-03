@@ -24,6 +24,19 @@ class UserDetail extends AppModel {
         return $stat;
     }
 
+
+    /**
+     */
+    public function updateLastLoginDateTimeById ($id) {
+        $data = array(
+            'UserDetail' => array(
+                'id' => $id
+                'last_login' => date('Y-m-d H:i:s')
+            )
+        );
+        return $this->save($data);
+    }
+
     /**
      */
     public function getAccessTokenById($user_id) {

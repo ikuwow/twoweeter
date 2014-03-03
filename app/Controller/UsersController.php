@@ -24,15 +24,25 @@ class UsersController extends AppController {
         if (!isset($_GET['oauth_verifier'])) { // 認証前
 
             $to = new TwitterOAuth(CONSUMER_KEY,CONSUMER_SECRET);
-            $request_token = $to->getRequestToken('http://'.$_SERVER['SERVER_NAME'].'/users/register');
+            $request_token = $to->getRequestToken(
+                'http://'.$_SERVER['SERVER_NAME'].'/users/register'
+            );
+            // $this->Session->write('request_token',$request_token);
+            // debug($request_token);
 
             if (!isset($request_token)) {
                 echo 'Error on request token';
                 die();
             }
     
-            $this->Session->write('oauth_token',$request_token['oauth_token']);
-            $this->Session->write('oauth_token_secret',$request_token['oauth_token_secret']);
+            $this->Session->write(
+                'oauth_token',
+                $request_token['oauth_token']
+            );
+            $this->Session->write(
+                'oauth_token_secret',
+                $request_token['oauth_token_secret']
+            );
     
             $authorize_URI = $to->getAuthorizeURL($request_token['oauth_token']);
             header('Location: '.$authorize_URI);
@@ -40,12 +50,13 @@ class UsersController extends AppController {
 
         } else { // 認証画面から帰ったあと
     
+            // トークンが正しいかチェック
             if ($this->Session->read('oauth_token') !== $_REQUEST['oauth_token']) {
                 echo 'error';
                 exit;
             }
     
-            // もらったoauth_tokenをつかう
+            // もらったoauth_tokenでオブジェクト作成
             $to = new TwitterOAuth(
                 CONSUMER_KEY,
                 CONSUMER_SECRET,
@@ -70,7 +81,6 @@ class UsersController extends AppController {
 
             // Timezoneを設定
             $settings = $to->get('account/settings');
-            // $this->Session->write('settings',$settings);
 
             // UserDetailのidを取得（初回判定など）
             $user_detail_id = $this->UserDetail->find('count',array(
@@ -86,12 +96,12 @@ class UsersController extends AppController {
                     $settings->time_zone->name,
                     $settings->time_zone->utc_offset
                 );
-                // $user_detail_id = $this->UserDetail->getLastInsertID();
+                $user_detail_id = $this->UserDetail->getLastInsertID();
                 // ここで、初回のツイート読み込みをさせたい
             }
+
             // ログイン時刻を更新
-            $data = array('UserDetail'=>array('id'=>$user_detail_id,'last_login'=>date('Y-m-d H:i:s')));
-            // $this->UserDetail->save($data,false,array('last_login'));
+            $this->UserDetail->updateLastLoginDateTimeById($user_detail_id);
 
             // セッション書き込み
             $this->Session->write('user.id',$me->id);
