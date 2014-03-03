@@ -50,7 +50,7 @@ class UsersController extends AppController {
 
         } else { // 認証画面から帰ったあと
     
-            // トークンが正しいかチェック
+            // トークンが正しくないなら弾く
             if ($this->Session->read('oauth_token') !== $_REQUEST['oauth_token']) {
                 echo 'error';
                 exit;
@@ -70,6 +70,7 @@ class UsersController extends AppController {
 
             // 基本情報me
             $me = $to->get('account/verify_credentials');
+            // debug($me);
             $this->Session->write('me',$me);
 
             // アクセスに必要な情報
@@ -149,7 +150,7 @@ class UsersController extends AppController {
                 'statuses/user_timeline',
                 array(
                     'user_id' => $info->id,
-                    'count' => 100,
+                    'count' => Configure::read('NUM_TWEET_TIMELINE'),
                     'include_rts' => true,
                     'trim_user' => true
                 )
