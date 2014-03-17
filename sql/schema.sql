@@ -53,5 +53,6 @@ create table if not exists tweets (
     is_tweeted boolean not null default 0,
     tweet_date datetime not null,
     created datetime not null,
-    modified datetime
+    modified datetime,
+    index(user_id)
 ) engine=InnoDB default charset=utf8mb4;
