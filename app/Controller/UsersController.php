@@ -23,7 +23,10 @@ class UsersController extends AppController {
 
         if (!isset($_GET['oauth_verifier'])) { // 認証前
 
-            $to = new TwitterOAuth(CONSUMER_KEY,CONSUMER_SECRET);
+            $to = new TwitterOAuth(
+                Configure::read('CONSUMER_KEY'),
+                Configure::read('CONSUMER_SECRET')
+            );
             $request_token = $to->getRequestToken(
                 'http://'.$_SERVER['SERVER_NAME'].'/users/register'
             );
@@ -58,8 +61,8 @@ class UsersController extends AppController {
     
             // もらったoauth_tokenでオブジェクト作成
             $to = new TwitterOAuth(
-                CONSUMER_KEY,
-                CONSUMER_SECRET,
+                Configure::read('CONSUMER_KEY'),
+                Configure::read('CONSUMER_SECRET'),
                 $this->Session->read('oauth_token'),
                 $this->Session->read('oauth_token_secret')
             );
@@ -70,7 +73,6 @@ class UsersController extends AppController {
 
             // 基本情報me
             $me = $to->get('account/verify_credentials');
-            // debug($me);
             if (isset($me->errors)) {
                 foreach ($me->errors as $error) {
                     echo $error->message;
@@ -130,8 +132,8 @@ class UsersController extends AppController {
 
         // オブジェクト作成
         $to = new TwitterOAuth(
-            CONSUMER_KEY,
-            CONSUMER_SECRET,
+            Configure::read('CONSUMER_KEY'),
+            Configure::read('CONSUMER_SECRET'),
             $this->Session->read('user.access_token'),
             $this->Session->read('user.access_token_secret')
         );

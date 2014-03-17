@@ -19,8 +19,8 @@ class MypagesController extends AppController {
             $this->redirect(array('controller'=>'tops','action'=>'index'));
         } else {
             $this->to = new TwitterOAuth(
-                CONSUMER_KEY,
-                CONSUMER_SECRET,
+                Configure::read('CONSUMER_KEY'),
+                Configure::read('CONSUMER_SECRET'),
                 $this->Session->read('user.access_token'),
                 $this->Session->read('user.access_token.secret')
             );
@@ -30,16 +30,14 @@ class MypagesController extends AppController {
 
     public function timeline() {
         $followings = $this->Follow->getFollowingsByUserId($this->me->id);
-        $following_userid = array();
+        $following_userids = array();
         foreach ($followings as $following) {
-            $following_userid[] = $following['Follow']['following_user_id'];
+            $following_userids[] = $following['Follow']['following_user_id'];
         }
-        $tweets = $this->Tweet->getTweets2weeksAgoByFollowingUserIds($following_userid);
+        $tweets = $this->Tweet->getTweets2weeksAgoByFollowingUserIds($following_userids);
         $this->set('tweets',$tweets);
         $this->layout = 'mypage';
         $this->set('me',$this->Session->read('me')); 
-
-        debug($this->UserDetail->findById(1));
     }
     
 

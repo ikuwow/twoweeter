@@ -9,13 +9,12 @@ class Tweet extends AppModel {
     public function getTweets($me) {
         $options = array(
             'conditions' => array(
-                //'user_id' => $me->id
-                'user_id' => 118995622
+                'user_id' => $me->id
+                //'user_id' => 118995622
             ),
             'limit' => 100
         );
         $tweets = $this->find('all',$options);
-        //$tweets = $this->find('all');
         return $tweets;
     }
 
@@ -44,7 +43,6 @@ class Tweet extends AppModel {
                 'Tweet.user_id' => $following_user_ids,
                 'Tweet.tweet_date <=' => date('Y-m-d H:i:s',strtotime('-2 week'))
             ),
-            'limit' => 100,
             'fields' => array(
                 'User.screen_name',
                 'User.name',
@@ -52,7 +50,8 @@ class Tweet extends AppModel {
                 'Tweet.tweet',
                 'Tweet.tweet_date'
             ),
-            'order' => 'Tweet.tweet_date DESC'
+            'order' => 'Tweet.tweet_date DESC',
+            'limit' => Configure::read('NUM_TWEET_TIMELINE'),
         );
         $tweets = $this->find('all',$options);
         return $tweets;

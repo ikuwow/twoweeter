@@ -56,14 +56,4 @@ class AppController extends Controller {
         )*/
     );
 
-    /*
-    public function beforeFilter() {
-        $this->TwitterOAuth = new TwitterOAuth(
-            CONSUMER_KEY,
-            CONSUMER_SECRET,
-            ACCESS_TOKEN,
-            ACCESS_TOKEN_SECRET
-        );
-    }
-     */
 }

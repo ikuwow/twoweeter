@@ -60,7 +60,7 @@ $title_for_layout = 'Twoweeter';
 
     <?php echo $this->element('footer');?>
 
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 
 
 </body>
