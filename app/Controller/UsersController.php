@@ -71,6 +71,12 @@ class UsersController extends AppController {
             // 基本情報me
             $me = $to->get('account/verify_credentials');
             // debug($me);
+            if (isset($me->errors)) {
+                foreach ($me->errors as $error) {
+                    echo $error->message;
+                }
+                die();
+            }
             $this->Session->write('me',$me);
 
             // アクセスに必要な情報

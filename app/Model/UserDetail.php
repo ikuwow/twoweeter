@@ -30,7 +30,7 @@ class UserDetail extends AppModel {
     public function updateLastLoginDateTimeById ($id) {
         $data = array(
             'UserDetail' => array(
-                'id' => $id
+                'id' => $id,
                 'last_login' => date('Y-m-d H:i:s')
             )
         );
