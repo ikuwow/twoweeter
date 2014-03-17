@@ -94,4 +94,15 @@ class Tweet extends AppModel {
         }
         return $stat;
     }
+
+    /*
+    public function saveTweetsForEachUser($tweets) {
+        $data = array();
+        foreach ($tweets as $key=>$tweet) {
+        }
+        $data[$key] = array(
+        );
+        return $this->saveAll($data);
+    }
+     */
 }

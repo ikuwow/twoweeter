@@ -114,5 +114,4 @@ CakePlugin::load('BoostCake');
 config('secret');
 
 // my configulation below
-
 Configure::write('NUM_TWEET_TIMELINE',100);

@@ -36,4 +36,21 @@ class User extends AppModel {
         return $stat;
     }
 
+    public function saveTwitterUserInfos($userinfos) {
+        $data = array();
+        foreach ($userinfos as $key => $info) {
+            $data[$key] = array(
+                'User' => array(
+                    'id' => $info->id,
+                    'screen_name' => $info->screen_name,
+                    'name' => $info->name,
+                    'icon_url' => $info->profile_image_url,
+                    //'is_registered' => $is_registered,
+                    'last_login' => date('Y-m-d H:i:s'),
+                )
+            );
+        }
+        return $this->saveAll($data);
+    }
+
 }

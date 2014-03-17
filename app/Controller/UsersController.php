@@ -150,7 +150,31 @@ class UsersController extends AppController {
                 'user_id'=>implode($followings->ids,',')
             )
         );
+        // debug($following_userinfos);
 
+        // ユーザ情報の保存
+        $stat = $this->User->saveTwitterUserInfos($following_userinfos);
+        /*
+        $tweets = array();
+        foreach ($following_userinfos as $key=>$info) {
+            $tweets[$key] = $to->get(
+                'statuses/user_timeline',
+                array(
+                    'user_id' => $info->id,
+                    'count' => Configure::read('NUM_TWEET_TIMELINE'),
+                    'include_rts' => true,
+                    'trim_user' => true
+                )
+            );
+        }
+        if (!$stat) {
+            echo 'Some error occured in importing tweets.';
+            die();
+        }
+         */
+        // debug($tweets);
+        // $stat = $this->Tweet->saveTweetForEachUser($tweets);
+        // これは確実に遅い
         $stat = true;
         foreach ($following_userinfos as $key=>$info) {
             $this->User->saveTwitterUserInfo($info);
