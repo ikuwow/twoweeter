@@ -1,8 +1,8 @@
 # scrap & bulid sql
 # 
 
-drop database twoweeter;
-create database twoweeter;
+drop database if exists twoweeter;
+create database if not exists twoweeter;
 grant all on twoweeter.* to developer@localhost;
 
 use twoweeter;
