@@ -30,6 +30,7 @@
                 )
             );
             ?>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#post-tweet">button</button>
             <span class="side-logout">
             <?php
             echo $this->Html->link('Logout',
@@ -73,6 +74,31 @@
     </div><!-- col-md-8 -->
 
 </div><!-- row -->
+
+<!-- modal -->
+<div class="modal fade" id="post-tweet">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Tweet</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+            <?php //<label for="inputTweet">つぶやき</label> ?>
+            <textarea class="form-control" rows="4"></textarea>
+            <?php //echo $this->Form->create(); ?>
+            <?php //echo $this->Form->input('',array('type'=>'text')); ?>
+            <?php //echo $this->Form->end(); ?>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" target="/users/update">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- JavaScript -->
 <?php //echo $this->Html->script('sidebar');?>

@@ -9,6 +9,10 @@ class MypagesController extends AppController {
         'UserDetail'
     );
 
+    public $helpers = array(
+        'Form'
+    );
+
     public $to;
     public $me;
 
