@@ -38,9 +38,6 @@
                     'controller'=>'users',
                     'action'=>'logout'
                 )
-                /*array(
-                    'class'=>array('btn','btn-warning','btn-lg')
-                )*/
             );
             ?>
             </span>
@@ -76,7 +73,7 @@
 </div><!-- row -->
 
 <!-- modal -->
-<div class="modal fade" id="post-tweet">
+<div id="post-tweet" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,15 +83,16 @@
       <div class="modal-body">
         <p>
             <?php //<label for="inputTweet">つぶやき</label> ?>
-            <textarea class="form-control" rows="4"></textarea>
-            <?php //echo $this->Form->create(); ?>
-            <?php //echo $this->Form->input('',array('type'=>'text')); ?>
-            <?php //echo $this->Form->end(); ?>
+            <?php //<textarea class="form-control" rows="4"></textarea>?>
+            <?php echo $this->Form->create('User',array('action'=>'update')); ?>
+            <?php echo $this->Form->input('tweet',array('type'=>'textarea','rows'=>'4','cols'=>'90')); ?>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" target="/users/update">Save changes</button>
+            <?php echo $this->Form->button('Close',array('class'=>'btn btn-default','data-dismiss'=>'modal')); ?>
+            <?php echo $this->Form->button('Tweet',array('class'=>'btn btn-primary')); ?>
+            <?php echo $this->Form->end(); ?>
+            <?php //<button type="button" class="btn btn-primary" target="/users/update">Post tweet</button> ?>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

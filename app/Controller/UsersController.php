@@ -10,6 +10,10 @@ class UsersController extends AppController {
         'Timezone'
     );
 
+    public $helpers = array(
+        'Session'
+    );
+
     // Toppage
     public function index(){
     }
@@ -197,6 +201,14 @@ class UsersController extends AppController {
         //$this->Session->setFlash('Reading Tweets Done!');
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
+    }
+
+    public function update() {
+        if ($this->request->is('post')) {
+            // debug($this->request->data['User']['tweet']);
+            $this->Session->setFlash($this->request->data['User']['tweet']);
+            $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
+        }
     }
 
     public function logout() {
