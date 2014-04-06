@@ -110,6 +110,9 @@ CakeLog::config('error', array(
 // BoostCake 2014/1/27
 CakePlugin::load('BoostCake');
 
+// cakephp-phpunit
+CakePlugin::loadAll();
+
 // load secret codes
 config('secret');
 
