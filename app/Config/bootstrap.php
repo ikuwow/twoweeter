@@ -111,7 +111,7 @@ CakeLog::config('error', array(
 CakePlugin::load('BoostCake');
 
 // cakephp-phpunit
-CakePlugin::loadAll();
+CakePlugin::load('Phpunit');
 
 // load secret codes
 config('secret');

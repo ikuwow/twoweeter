@@ -7,3 +7,6 @@
 [submodule "app/Vendor/cakephp-phpunit"]
 	path = app/Vendor/cakephp-phpunit
 	url = https://github.com/dereuromark/cakephp-phpunit
+[submodule "app/Plugin/cakephp-phpunit"]
+	path = app/Plugin/Phpunit
+	url = https://github.com/dereuromark/cakephp-phpunit
