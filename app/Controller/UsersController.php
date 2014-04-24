@@ -121,12 +121,10 @@ class UsersController extends AppController {
                     $tzoffset
                 );
 
-                /*
                 if (!$stat) {
-                    echo "error!!!!!";
+                    debug($this->UserDetail->validationErrors);
                     exit;
                 }
-                 */
                 $user_detail_id = $this->UserDetail->getLastInsertID();
                 // ここで、初回のツイート読み込みをさせたい
             }

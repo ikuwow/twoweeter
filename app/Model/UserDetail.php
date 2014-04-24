@@ -12,18 +12,18 @@ class UserDetail extends AppModel {
             'message' => 'user_id is required.'
         ),
         'access_token' => array(
-            'rule' => 'alphaNumeric',
+            'rule' => 'notEmpty',
             'message' => 'Invalid access_token.'
         ),
         'access_token_secret' => array(
-            'rule' => 'alphaNumeric',
+            'rule' => 'notEmpty',
             'message' => 'Invalid access_token_secret.'
         ),
+        // これはassociationで定義されるからいいのかな
         'timezone_id' => array(
             'rule' => 'notEmpty',
             'message' => 'Invalid timezone_id.'
         )
-        // 'last_login' => 
     );
 
     /**

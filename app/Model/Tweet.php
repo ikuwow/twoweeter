@@ -6,6 +6,18 @@ class Tweet extends AppModel {
         'User'
     );
 
+    public $validate = array(
+        'user_id' => array(
+            'rule' => 'notEmpty'
+        ),
+        'tweet' => array(
+            'rule' => array('maxLength','200')
+        ),
+        'tweet_date' => array(
+            'rule' => 'notEmpty'
+        )
+    );
+
     public function getTweets($me) {
         $options = array(
             'conditions' => array(
