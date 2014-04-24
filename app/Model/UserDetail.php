@@ -6,6 +6,26 @@ class UserDetail extends AppModel {
         'Timezone'
     );
 
+    public $validate = array(
+        'user_id' => array(
+            'rule' => 'numeric',
+            'message' => 'user_id is required.'
+        ),
+        'access_token' => array(
+            'rule' => 'alphaNumeric',
+            'message' => 'Invalid access_token.'
+        ),
+        'access_token_secret' => array(
+            'rule' => 'alphaNumeric',
+            'message' => 'Invalid access_token_secret.'
+        ),
+        'timezone_id' => array(
+            'rule' => 'notEmpty',
+            'message' => 'Invalid timezone_id.'
+        )
+        // 'last_login' => 
+    );
+
     /**
      */
     public function registerImport($user_id,$at,$atc,$tname,$toffset) {

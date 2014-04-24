@@ -10,6 +10,20 @@ class User extends AppModel {
         'Follow'
     );
 
+    public $validate = array(
+        'screen_name' => array(
+            'rule' => array('custom','/^[a-zA-Z0-9_]{1,32}$/'),
+            'message' => 'Invalid screen_name.'
+        ),
+        'name' => array(
+            'rule' => 'notEmpty'
+        ),
+        'icon_url' => array(
+            'rule' => 'url'
+        ),
+        'is_registered' => 'notEmpty'
+    );
+
     public function getUserById($id) {
         $options = array(
             'conditions' => array(
