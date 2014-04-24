@@ -94,6 +94,7 @@ class UsersController extends AppController {
 
             // Timezoneを設定
             $settings = $to->get('account/settings');
+            debug($settings);
 
             // UserDetailのidを取得（初回判定など）
             $user_detail_id = $this->UserDetail->find('count',array(
@@ -102,12 +103,22 @@ class UsersController extends AppController {
 
             // 初回ならアクセストークン、timezoneをセーブ
             if (!$user_detail_id) {
+
+                // timezoneあるなし
+                if (!isset($settings->time_zone)) {
+                    $tzname = 'UTC';
+                    $tzoffset = 0;
+                } else {
+                    $tzname = $settings->timezone->name;
+                    $tzoffset = $settings->timezone->utc_offset;
+                }
+
                 $this->UserDetail->registerImport(
                     $me->id,
                     $access_token['oauth_token'],
                     $access_token['oauth_token_secret'],
-                    $settings->time_zone->name,
-                    $settings->time_zone->utc_offset
+                    $tzname,
+                    $tzoffset
                 );
                 $user_detail_id = $this->UserDetail->getLastInsertID();
                 // ここで、初回のツイート読み込みをさせたい
