@@ -1,29 +1,84 @@
-<?php 
-App::uses('Tweet','Model');
+<?php
+App::uses('tweet', 'Model');
 
 /**
+ * tweet Test Case
  *
- * Tweetモデルのテスト
- * @author Ikuo Degawa
  */
-class TweetTest extends CakeTestCase {
+class tweetTest extends CakeTestCase {
 
-    public $fixtures = array(
-        // 'app.user_detail',
-        // 'app.follow'
-        'app.user'
-    );
+/**
+ * Fixtures
+ *
+ * @var array
+ */
+	public $fixtures = array(
+		'app.tweet',
+		'app.user',
+		'app.user_detail',
+		'app.timezone',
+		'app.follow'
+	);
 
-    public function setUp() {
-        parent::setUp();
+/**
+ * setUp method
+ *
+ * @return void
+ */
+	public function setUp() {
+		parent::setUp();
+		$this->tweet = ClassRegistry::init('tweet');
+	}
 
-        // new TopicではなくClassREgistry。
-        // これにするとデータベースが$testの方になる
-        $this->Tweet = ClassRegistry::init('Tweet');
-    }
+/**
+ * tearDown method
+ *
+ * @return void
+ */
+	public function tearDown() {
+		unset($this->tweet);
 
-    public function tearDown() {
-        unset($this->Tweet);
-        parent::tearDown();
-    }
+		parent::tearDown();
+	}
+
+/**
+ * testGetTweets method
+ *
+ * @return void
+ */
+	public function testGetTweets() {
+	}
+
+/**
+ * testGetTweetsByFollowingUserIds method
+ *
+ * @return void
+ */
+	public function testGetTweetsByFollowingUserIds() {
+	}
+
+/**
+ * testGetTweets2weeksAgoByFollowingUserIds method
+ *
+ * @return void
+ */
+	public function testGetTweets2weeksAgoByFollowingUserIds() {
+	}
+
+/**
+ * testSaveTweetByUserId method
+ *
+ * @return void
+ */
+	public function testSaveTweetByUserId() {
+	}
+
+/**
+ * testSaveTweetsByUserId method
+ *
+ * @return void
+ */
+	public function testSaveTweetsByUserId() {
+	}
+
 }

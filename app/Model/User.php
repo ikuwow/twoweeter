@@ -50,6 +50,7 @@ class User extends AppModel {
         return $stat;
     }
 
+    // saveTwitterUserInfoの複数版 
     public function saveTwitterUserInfos($userinfos) {
         $data = array();
         foreach ($userinfos as $key => $info) {

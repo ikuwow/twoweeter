@@ -1,0 +1,126 @@
+<?php
+/**
+ * UserFixture
+ *
+ */
+class UserFixture extends CakeTestFixture {
+
+/**
+ * Fields
+ *
+ * @var array
+ */
+	public $fields = array(
+		'id' => array('type' => 'biginteger', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'screen_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 15, 'key' => 'unique', 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
+		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 20, 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
+		'icon_url' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 100, 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
+		'is_registered' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
+		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'screen_name' => array('column' => 'screen_name', 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'utf8mb4', 'collate' => 'utf8mb4_general_ci', 'engine' => 'InnoDB')
+	);
+
+/**
+ * Records
+ *
+ * @var array
+ */
+	public $records = array(
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+		array(
+			'id' => '',
+			'screen_name' => 'Lorem ipsum d',
+			'name' => 'Lorem ipsum dolor ',
+			'icon_url' => 'Lorem ipsum dolor sit amet',
+			'is_registered' => 1,
+			'created' => '2014-04-26 20:20:13',
+			'modified' => '2014-04-26 20:20:13'
+		),
+	);
+
+}
