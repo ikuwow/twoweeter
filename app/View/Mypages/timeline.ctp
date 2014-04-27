@@ -15,8 +15,8 @@
         </div>
         <div class="list-group">
             <a href="#" class="list-group-item active">Timeline</a>
-            <a href="#" class="list-group-item">Mentions (comming soon)</a>
-            <a href="#" class="list-group-item">Account (comming soon)</a>
+            <?php //<a href="#" class="list-group-item">Mentions (comming soon)</a>?>
+            <?php //<a href="#" class="list-group-item">Account (comming soon)</a> ?>
         </div><!-- list-group -->
             <div class="side-button-box">
             <?php
@@ -30,7 +30,7 @@
                 )
             );
             ?>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#post-tweet">button</button>
+            <?php //<button class="btn btn-warning" data-toggle="modal" data-target="#post-tweet">button</button> ?>
             <span class="side-logout">
             <?php
             echo $this->Html->link('Logout',

@@ -66,18 +66,21 @@ $title_for_layout = 'Twoweeter: timeline';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home">Twoweeter</a>
+                <a class="navbar-brand" href="/">Twoweeter</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#timeline">Timeline</a>
+                    <li>
+                    <?php echo $this->Html->link('Timeline',array('controller'=>'mypages','action'=>'timeline'));?>
                     </li>
+                    <?php /*
                     <li><a href="#mentions">Mentions</a>
                     </li>
                     <li><a href="#account">Account</a>
                     </li>
+                     */ ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
