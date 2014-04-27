@@ -34,104 +34,34 @@ class UserDetailFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '1',
+			'user_id' => '1',
 			'access_token' => 'Lorem ipsum dolor sit amet',
 			'access_token_secret' => 'Lorem ipsum dolor sit amet',
 			'timezone_id' => 1,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
+			'last_login' => '2014-04-27 11:46:27',
+			'created' => '2014-04-27 11:46:27',
+			'modified' => '2014-04-27 11:46:27'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '2',
+			'user_id' => '2',
 			'access_token' => 'Lorem ipsum dolor sit amet',
 			'access_token_secret' => 'Lorem ipsum dolor sit amet',
 			'timezone_id' => 2,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
+			'last_login' => '2014-04-27 11:46:27',
+			'created' => '2014-04-27 11:46:27',
+			'modified' => '2014-04-27 11:46:27'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '3',
+			'user_id' => '3',
 			'access_token' => 'Lorem ipsum dolor sit amet',
 			'access_token_secret' => 'Lorem ipsum dolor sit amet',
 			'timezone_id' => 3,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 4,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 5,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 6,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 7,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 8,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 9,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'access_token' => 'Lorem ipsum dolor sit amet',
-			'access_token_secret' => 'Lorem ipsum dolor sit amet',
-			'timezone_id' => 10,
-			'last_login' => '2014-04-26 20:22:40',
-			'created' => '2014-04-26 20:22:40',
-			'modified' => '2014-04-26 20:22:40'
+			'last_login' => '2014-04-27 11:46:27',
+			'created' => '2014-04-27 11:46:27',
+			'modified' => '2014-04-27 11:46:27'
 		),
 	);
 

@@ -19,23 +19,45 @@ class timezoneTest extends CakeTestCase {
 		'app.follow'
 	);
 
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
 	public function setUp() {
 		parent::setUp();
-		$this->timezone = ClassRegistry::init('timezone');
+		$this->Timezone = ClassRegistry::init('Timezone');
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+    public function test成功すべきもの() {
+        $this->Timezone->create(array(
+            'Timezone' => array(
+                'name' => 'name',
+                'utc_offset' => '32400'
+            )
+        ));
+        $this->assertNoErrors();
+    }
+
+    public function test名前は入力必須() {
+
+        // nameがないもの
+        $this->Timezone->create(array(
+            'Timezone' => array(
+                'name' => '',
+                'utc_offset' => '32400'
+            )
+        ));
+        $this->assertFalse($this->Timezone->validates());
+    }
+
+    /**
+     * tearDown method
+     *
+     * @return void
+     */
 	public function tearDown() {
-		unset($this->timezone);
+		unset($this->Timezone);
 
 		parent::tearDown();
 	}

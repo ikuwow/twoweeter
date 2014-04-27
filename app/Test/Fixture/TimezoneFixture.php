@@ -38,64 +38,15 @@ class TimezoneFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => 2,
-			'name' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Timezone2',
 			'utc_offset' => 2,
 			'created' => '2014-04-26 20:17:52',
 			'modified' => '2014-04-26 20:17:52'
 		),
 		array(
 			'id' => 3,
-			'name' => 'Lorem ipsum dolor sit amet',
+			'name' => 'timezone3',
 			'utc_offset' => 3,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 4,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 4,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 5,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 5,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 6,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 6,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 7,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 7,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 8,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 8,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 9,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 9,
-			'created' => '2014-04-26 20:17:52',
-			'modified' => '2014-04-26 20:17:52'
-		),
-		array(
-			'id' => 10,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'utc_offset' => 10,
 			'created' => '2014-04-26 20:17:52',
 			'modified' => '2014-04-26 20:17:52'
 		),

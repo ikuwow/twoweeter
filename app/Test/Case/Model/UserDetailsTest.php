@@ -5,25 +5,46 @@ App::uses('user_details', 'Model');
  * user_details Test Case
  *
  */
-class user_detailsTest extends CakeTestCase {
+class user_detailTest extends CakeTestCase {
 
-/**
- * setUp method
- *
- * @return void
- */
+    public $fixtures = array(
+        'app.user',
+        'app.user_detail'
+    );
+
+    /**
+     * setUp method
+     *
+     * @return void
+     */
 	public function setUp() {
 		parent::setUp();
-		$this->user_details = ClassRegistry::init('user_details');
+		$this->UserDetail = ClassRegistry::init('UserDetail');
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+    /**
+     * 成功例
+     *
+     */
+    public function testSuccess() {
+        $this->UserDetail->create(array(
+            'UserDetail' => array(
+                'user_id' => '1',
+                'access_token' => 'asdfasdfasdfasdfasdf',
+                'access_token_secret' => 'adsfasdfasdfasdfasdfasdf',
+                'timezone_id' => '2'
+            )
+        ));
+        $this->assertNoErrors();
+    }
+
+    /**
+     * tearDown method
+     *
+     * @return void
+     */
 	public function tearDown() {
-		unset($this->user_details);
+		unset($this->UserDetail);
 
 		parent::tearDown();
 	}

@@ -27,55 +27,25 @@ class FollowFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
+			'id' => '1',
+			'user_id' => '1',
+			'following_user_id' => '2'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
+			'id' => '2',
+			'user_id' => '1',
+			'following_user_id' => '3'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
+			'id' => '3',
+			'user_id' => '1',
+			'following_user_id' => '4'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
-		array(
-			'id' => '',
-			'user_id' => '',
-			'following_user_id' => ''
-		),
+			'id' => '4',
+			'user_id' => '2',
+			'following_user_id' => '3'
+        )
 	);
 
 }

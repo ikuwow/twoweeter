@@ -32,95 +32,41 @@ class UserFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
+			'id' => '1',
+			'screen_name' => 'testuser1',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
+			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
 		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
+			'id' => '2',
+			'screen_name' => 'testuser2',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
+			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
 		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
+			'id' => '3',
+			'screen_name' => 'testuser3',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
+			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
 		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
+			'id' => '4',
+			'screen_name' => 'testuser4',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
+			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
-		array(
-			'id' => '',
-			'screen_name' => 'Lorem ipsum d',
-			'name' => 'Lorem ipsum dolor ',
-			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 1,
-			'created' => '2014-04-26 20:20:13',
-			'modified' => '2014-04-26 20:20:13'
-		),
+        )
 	);
 
 }

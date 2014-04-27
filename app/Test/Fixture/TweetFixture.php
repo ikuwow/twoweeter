@@ -32,8 +32,8 @@ class TweetFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '1',
+			'user_id' => '1',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -41,8 +41,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '2',
+			'user_id' => '2',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -50,8 +50,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '3',
+			'user_id' => '3',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -59,8 +59,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '4',
+			'user_id' => '1',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -68,8 +68,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '5',
+			'user_id' => '4',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -77,8 +77,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '6',
+			'user_id' => '1',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -86,8 +86,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '7',
+			'user_id' => '2',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -95,8 +95,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '8',
+			'user_id' => '3',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -104,8 +104,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '9',
+			'user_id' => '2',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
@@ -113,8 +113,8 @@ class TweetFixture extends CakeTestFixture {
 			'modified' => '2014-04-26 20:21:14'
 		),
 		array(
-			'id' => '',
-			'user_id' => '',
+			'id' => '10',
+			'user_id' => '2',
 			'tweet' => 'Lorem ipsum dolor sit amet',
 			'is_tweeted' => 1,
 			'tweet_date' => '2014-04-26 20:21:14',
