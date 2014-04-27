@@ -108,8 +108,8 @@ class UsersController extends AppController {
                     $tzname = 'UTC';
                     $tzoffset = 0;
                 } else {
-                    $tzname = $settings->timezone->name;
-                    $tzoffset = $settings->timezone->utc_offset;
+                    $tzname = $settings->time_zone->name;
+                    $tzoffset = $settings->time_zone->utc_offset;
                 }
 
 
