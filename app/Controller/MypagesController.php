@@ -19,7 +19,7 @@ class MypagesController extends AppController {
     // ログインチェック、オブジェクト作成
     public function beforeFilter() {
         $user = $this->Session->read('user');
-        if (!isset($user)){
+        if (!isset($user)) {
             $this->redirect(array('controller'=>'tops','action'=>'index'));
         } else {
             $this->to = new TwitterOAuth(

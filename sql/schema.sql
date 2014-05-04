@@ -39,9 +39,12 @@ CREATE TABLE IF NOT EXISTS user_details (
 # follows
 # drop table if exists follows; 
 CREATE TABLE IF NOT EXISTS follows (
-    id BIGINT not null primary key auto_increment,
-    user_id BIGINT NOT NULL,
-    following_user_id BIGINT NOT NULL
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT UNSIGNED NOT NULL,
+    following_user_id BIGINT UNSIGNED NOT NULL,
+    UNIQUE KEY (user_id,following_user_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (following_user_id) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 # tweets

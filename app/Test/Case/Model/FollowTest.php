@@ -1,5 +1,6 @@
 <?php
-App::uses('follow', 'Model');
+App::uses('Follow', 'Model');
+App::uses('User', 'Model');
 
 /**
  * follow Test Case
@@ -7,50 +8,66 @@ App::uses('follow', 'Model');
  */
 class followTest extends CakeTestCase {
 
-/**
- * Fixtures
- *
- * @var array
- */
+    /**
+     * Fixtures
+     *
+     * @var array
+     */
 	public $fixtures = array(
-		'app.follow'
+		'app.follow','app.user'
 	);
 
-/**
- * setUp method
- *
- * @return void
- */
+    /**
+     * setUp method
+     *
+     * @return void
+     */
 	public function setUp() {
 		parent::setUp();
-		$this->follow = ClassRegistry::init('follow');
+		$this->Follow = ClassRegistry::init('Follow');
+		$this->User = ClassRegistry::init('User');
 	}
 
-/**
- * tearDown method
- *
- * @return void
- */
+    /**
+     * tearDown method
+     *
+     * @return void
+     */
 	public function tearDown() {
-		unset($this->follow);
-
+		unset($this->Follow);
+		unset($this->User);
 		parent::tearDown();
 	}
 
-/**
- * testGetFollowingsByUserId method
- *
- * @return void
- */
+    /**
+     * testGetFollowingsByUserId method
+     *
+     * @return void
+     */
 	public function testGetFollowingsByUserId() {
+        $id = '1';
+        $data = $this->Follow->getFollowingsByUserId($id);
+
+        $this->assertEquals(
+            array('Follow' => array(
+                    'following_user_id' => '2'
+            )),
+            $data[0]
+        );
+
 	}
 
-/**
- * testSaveFollowings method
- *
- * @return void
- */
+    /**
+     * testSaveFollowings method
+     *
+     * @return void
+     */
 	public function testSaveFollowings() {
+        $me->id = 1;
+        $followings->ids = array(2,3,4);
+        $stat = $this->Follow->saveFollowings($me,$followings);
+
+        $this->assertEquals($stat,true);
 	}
 
 }

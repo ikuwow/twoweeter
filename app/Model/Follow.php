@@ -22,6 +22,25 @@ class Follow extends AppModel {
     }
 
     public function saveFollowings($me,$followings) {
+
+        // 重いが、重複は防げるクエリ。
+        foreach ($followings->ids as $id) {
+            $condition = array(
+                'user_id' => $me->id,
+                'following_user_id' => $id
+            );
+            $data = array();
+            if (!$this->hasAny($condition)) {
+                $data[] = array(
+                    'user_id' => $me->id,
+                    'following_user_id' => $id
+                );
+            }
+        }
+
+        $stat = $this->saveMany($data);
+
+        /*
         $data = array();
         foreach ($followings->ids as $following) {
             $data[] = array(
@@ -32,10 +51,7 @@ class Follow extends AppModel {
             );
         }
         $stat = $this->saveAll($data);
-        // 重複を削除、うまいやり方はないのか・・・。
-        // 入れるときに取り除くor入れてから取り除く。
-        // select * from follow where user_id=:user_id group by
-        //      following_user_id having count(id) > 1;
+         */
         return $stat;
     }
 

@@ -159,21 +159,27 @@ class UsersController extends AppController {
         );
 
         $followings = $to->get('friends/ids');
-        $stat = $this->Follow->saveFollowings($this->Session->read('me'),$followings);
-        
-        //debug($followings);
-        // $this->Session->write('followings',$followings);
-        //$statuses[$key] = $to->get('users/lookup',array('user_id'=>$id));
         $following_userinfos = $to->get(
             'users/lookup',
             array(
                 'user_id'=>implode($followings->ids,',')
             )
         );
-        // debug($following_userinfos);
 
         // ユーザ情報の保存
         $stat = $this->User->saveTwitterUserInfos($following_userinfos);
+        if (!$stat) {
+            echo 'Unexpected error has occured in saving twitter user infos.';
+            die()
+        }
+        
+        // フォロー情報の保存
+        $stat = $this->Follow->saveFollowings($this->Session->read('me'),$followings);
+        if (!$stat) {
+            echo 'Unexpected error has occured in saving following infos.';
+            die()
+        }
+        
         /*
         $tweets = array();
         foreach ($following_userinfos as $key=>$info) {
@@ -192,7 +198,7 @@ class UsersController extends AppController {
             die();
         }
          */
-        // debug($tweets);
+
         // $stat = $this->Tweet->saveTweetForEachUser($tweets);
         // これは確実に遅い
         $stat = true;

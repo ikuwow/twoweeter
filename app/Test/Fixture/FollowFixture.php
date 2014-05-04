@@ -38,8 +38,8 @@ class FollowFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '3',
-			'user_id' => '1',
-			'following_user_id' => '4'
+			'user_id' => '2',
+			'following_user_id' => '1'
 		),
 		array(
 			'id' => '4',
