@@ -45,6 +45,7 @@ $title_for_layout = 'Twoweeter: timeline';
 		echo $this->fetch('css');
 		echo $this->fetch('script');
          */
+        echo $this->Html->script('analyticstracking');
 	?>
 </head>
 <body>
