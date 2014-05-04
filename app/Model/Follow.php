@@ -2,6 +2,13 @@
 /* Follow Model */
 class Follow extends AppModel {
 
+    // following_user_idでアソシエーションしていることに注意
+    public $belongsTo = array(
+        'User' => array(
+            'foreignKey' => 'following_user_id'
+        )
+    );
+
     public function getFollowingsByUserId($id) {
         $options = array(
             'conditions' => array(
