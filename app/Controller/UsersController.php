@@ -170,14 +170,14 @@ class UsersController extends AppController {
         $stat = $this->User->saveTwitterUserInfos($following_userinfos);
         if (!$stat) {
             echo 'Unexpected error has occured in saving twitter user infos.';
-            die()
+            die();
         }
         
         // フォロー情報の保存
         $stat = $this->Follow->saveFollowings($this->Session->read('me'),$followings);
         if (!$stat) {
             echo 'Unexpected error has occured in saving following infos.';
-            die()
+            die();
         }
         
         /*

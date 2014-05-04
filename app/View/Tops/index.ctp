@@ -32,8 +32,8 @@
         echo $this->Html->link(
             'Twitterアカウントでログイン',
             array(
-                'controller' => 'users',
-                'action' => 'register'
+                'controller' => 'tops',
+                'action' => 'login'
             ),
             array(
                 'class' => array('btn','btn-primary','btn-lg')
