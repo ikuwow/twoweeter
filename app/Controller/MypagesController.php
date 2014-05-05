@@ -20,7 +20,7 @@ class MypagesController extends AppController {
     public function beforeFilter() {
         $user = $this->Session->read('user');
         if (!isset($user)) {
-            $this->redirect(array('controller'=>'tops','action'=>'index'));
+            $this->redirect(array('controller'=>'pages','action'=>'index'));
         } else {
             $this->to = new TwitterOAuth(
                 Configure::read('CONSUMER_KEY'),

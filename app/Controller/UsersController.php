@@ -141,6 +141,7 @@ class UsersController extends AppController {
             $this->Session->delete('oauth_token');
             $this->Session->delete('oauth_token_secret');
 
+            $this->Session->setFlash('Login success!');
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
 
         }
@@ -235,6 +236,6 @@ class UsersController extends AppController {
 
     public function logout() {
         $this->Session->destroy();
-        $this->redirect(array('controller'=>'tops','action'=>'index'));
+        $this->redirect(array('controller'=>'pages','action'=>'index'));
     }
 }

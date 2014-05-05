@@ -55,7 +55,6 @@ $title_for_layout = 'Twoweeter: timeline';
 <?php echo $this->Html->script('bootstrap');?>
 
 
-    <?php echo $this->Session->flash(); ?>
 
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -90,6 +89,8 @@ $title_for_layout = 'Twoweeter: timeline';
     </nav>
 
     <div class="container">
+
+    <?php echo $this->Session->flash(); ?>
 
 	<?php echo $this->fetch('content'); ?>
 
