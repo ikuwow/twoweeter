@@ -32,7 +32,7 @@
         echo $this->Html->link(
             'Twitterアカウントでログイン',
             array(
-                'controller' => 'tops',
+                'controller' => 'pages',
                 'action' => 'login'
             ),
             array(

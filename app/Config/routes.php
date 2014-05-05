@@ -28,8 +28,9 @@
 
 	//Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 
-    // TopsController
-	Router::connect('/', array('controller' => 'tops', 'action' => 'index'));
+    // PagesController
+	Router::connect('/', array('controller' => 'pages', 'action' => 'index'));
+	Router::connect('/login', array('controller' => 'pages', 'action' => 'login'));
 
     // UsersController
 
