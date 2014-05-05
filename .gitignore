@@ -1,5 +1,6 @@
 app/Config/secret.php
 app/Config/database.php
+app/Config/core.php
 .htaccess
 *~
 
