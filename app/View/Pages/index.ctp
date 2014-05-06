@@ -72,28 +72,28 @@
                 <div class="service-item">
                     <i class="service-icon fa fa-twitter"></i>
                     <h4>Viewing Past Tweets</h4>
-                    <p>Did your navigation system shut down in the middle of that asteroid field? We can repair any dings and scrapes to your spacecraft!</p>
+                    <?php /* <p>Did your navigation system shut down in the middle of that asteroid field? We can repair any dings and scrapes to your spacecraft!</p> */?>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
                     <i class="service-icon fa fa-clock-o"></i>
                     <h4>Like a Time Machine</h4>
-                    <p>Need to know how magnets work? Our problem solving solutions team can help you identify problems and conduct exploratory research.</p>
+                    <?php /* <p>Need to know how magnets work? Our problem solving solutions team can help you identify problems and conduct exploratory research.</p> */?>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
                     <i class="service-icon fa fa-lightbulb-o"></i>
                     <h4>Awakening</h4>
-                    <p>Planning a time travel trip to the middle ages? Preserve the space time continuum by blending in with period accurate armor and weapons.</p>
+                    <?php /* <p>Planning a time travel trip to the middle ages? Preserve the space time continuum by blending in with period accurate armor and weapons.</p> */?>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="service-item">
                     <i class="service-icon fa fa-reply"></i>
                     <h4>Reply to Missed Tweets</h4>
-                    <p>We've been voted the best pencil sharpening service for 10 consecutive years. If you have a pencil that feels dull, we'll get it sharp!</p>
+                    <?php /* <p>We've been voted the best pencil sharpening service for 10 consecutive years. If you have a pencil that feels dull, we'll get it sharp!</p> */?>
                 </div>
             </div>
         </div>
