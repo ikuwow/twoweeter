@@ -30,7 +30,8 @@
         <h3 style="color:white;text-shadow:0px 1px 3px #327FCD;">See your timeline <em>two weeks ago</em>.</h3>
         <?php
         echo $this->Html->link(
-            'Twitterアカウントでログイン',
+            // 'Twitterアカウントでログイン',
+            __('Login with Twitter'),
             array(
                 'controller' => 'pages',
                 'action' => 'login'
@@ -50,8 +51,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h2>Twoweeterは、2週間前のあなたのツイッターのタイムラインを表示するサービスです。</h2>
-                <p class="lead">過去のツイートを、まるで今眺めているかのように閲覧できます。</p>
+            <h2><?php echo __('Twoweeter is a service that displays the time line of your Twitter two weeks ago.');?></h2>
+                    <?php /* 'Twoweeterは、2週間前のあなたのツイッターのタイムラインを表示するサービスです。'*/ ?>
+            <p class="lead"><?php echo __('You can browse tweets in the past as if looking though now.');?></p>
+            <?php /* '過去のツイートを、まるで今眺めているかのように閲覧できます。 */?>
             </div>
         </div>
     </div>
@@ -166,7 +169,8 @@
                 <h3>Now, let's start!</h3>
         <?php
         echo $this->Html->link(
-            'Twitterアカウントでログイン',
+            // 'Twitterアカウントでログイン',
+            __('Login with Twitter'),
             array(
                 'controller' => 'users',
                 'action' => 'register'
