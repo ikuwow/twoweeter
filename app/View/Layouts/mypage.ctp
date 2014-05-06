@@ -54,8 +54,6 @@ $title_for_layout = 'Twoweeter: timeline';
 <?php echo $this->Html->script('jquery-1.10.2');?>
 <?php echo $this->Html->script('bootstrap');?>
 
-
-
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -75,7 +73,7 @@ $title_for_layout = 'Twoweeter: timeline';
                     <li>
                     <?php echo $this->Html->link('Timeline',array('controller'=>'mypages','action'=>'timeline'));?>
                     </li>
-                    <?php /*
+                    <?php /* そのうちつくろう
                     <li><a href="#mentions">Mentions</a>
                     </li>
                     <li><a href="#account">Account</a>

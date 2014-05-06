@@ -55,8 +55,4 @@ class Follow extends AppModel {
         return $stat;
     }
 
-    /*
-    public function deleteDuplicateFollowings() {
-    }
-     */
 }

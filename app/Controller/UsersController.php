@@ -88,7 +88,7 @@ class UsersController extends AppController {
             // アクセスに必要な情報
             $stat = $this->User->saveTwitterUserInfo($me,true);
             if (!$stat) {
-                echo 'error!!';
+                echo 'unexpected error;';
                 die();
             }
 
@@ -141,14 +141,16 @@ class UsersController extends AppController {
             $this->Session->delete('oauth_token');
             $this->Session->delete('oauth_token_secret');
 
-            $this->Session->setFlash('Login success!');
+            $this->Session->setFlash('Login success!','default',array('class'=>'alert alert-success'));
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
 
         }
     
     }
 
-    // つぶやきを読み込む
+    /**
+     * つぶやきを読み込む
+     */
     public function importTweet() {
 
         // オブジェクト作成
@@ -170,37 +172,19 @@ class UsersController extends AppController {
         // ユーザ情報の保存
         $stat = $this->User->saveTwitterUserInfos($following_userinfos);
         if (!$stat) {
-            echo 'Unexpected error has occured in saving twitter user infos.';
-            die();
+            $this->Session->setFlash('Unexpected error has occured in saving twitter user infos.','default',array('class'=>'alert alert-danger'));
+            $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
         
         // フォロー情報の保存
         $stat = $this->Follow->saveFollowings($this->Session->read('me'),$followings);
         if (!$stat) {
-            echo 'Unexpected error has occured in saving following infos.';
-            die();
+            $this->Session->setFlash('Unexpected error has occured in saving following infos.','default',array('class'=>'alert alert-danger'));
+            $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
         
-        /*
-        $tweets = array();
-        foreach ($following_userinfos as $key=>$info) {
-            $tweets[$key] = $to->get(
-                'statuses/user_timeline',
-                array(
-                    'user_id' => $info->id,
-                    'count' => Configure::read('NUM_TWEET_TIMELINE'),
-                    'include_rts' => true,
-                    'trim_user' => true
-                )
-            );
-        }
-        if (!$stat) {
-            echo 'Some error occured in importing tweets.';
-            die();
-        }
-         */
 
-        // $stat = $this->Tweet->saveTweetForEachUser($tweets);
+        // ツイートの読み込み
         // これは確実に遅い
         $stat = true;
         foreach ($following_userinfos as $key=>$info) {
@@ -216,23 +200,26 @@ class UsersController extends AppController {
             );
             $stat = $stat && $this->Tweet->saveTweetsByUserId($info->id,$tweets);
         }
+
+        // ツイート読み込みでのDBエラー処理
         if (!$stat) {
-            echo 'Some error occured in importing tweets.';
-            die();
+            $this->Session->setFlash('Some error occured in importing tweets.','default',array('class'=>'alert alert-danger'));
+            $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
 
-        //$this->Session->setFlash('Reading Tweets Done!');
+        $this->Session->setFlash('Reading Tweets Done successfully!','default',array('alert alert-success'));
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
     }
 
+    /*
     public function update() {
         if ($this->request->is('post')) {
-            // debug($this->request->data['User']['tweet']);
             $this->Session->setFlash($this->request->data['User']['tweet']);
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
     }
+     */
 
     public function logout() {
         $this->Session->destroy();
