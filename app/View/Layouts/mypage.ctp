@@ -100,7 +100,16 @@ $title_for_layout = 'Twoweeter: timeline';
         <?php echo $this->element('footer');?>
     </div>
     <!-- /.container -->
-	<?php //echo $this->element('sql_dump'); ?>
+
+	<?php echo $this->element('sql_dump'); ?>
+
+    <script>
+    /*
+        setTimeout(function() {
+            $('#flashMessage').fadeOut('slow')
+        });
+    */ 
+    </script>
 
 </body>
 </html>
