@@ -215,7 +215,7 @@ class UsersController extends AppController {
                 'trim_user' => true
             )
         );
-        $stat = $stat && $this->Tweet->saveTweetsByUserId($info->id,$tweets);
+        $stat = $stat && $this->Tweet->saveTweetsByUserId($me->id,$tweets);
 
 
         // ツイート読み込みでのDBエラー処理
