@@ -8,10 +8,10 @@ class Timezone extends AppModel {
 
     public $validate = array(
         'name' => array(
-            'rule' => 'notEmpty'
+            'rule' => 'notEmpty',
         ),
         'utc_offset' => array(
-            'rule' => 'notEmpty'
+            'rule' => 'notEmpty',
         )
     );
 }

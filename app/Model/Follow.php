@@ -24,18 +24,24 @@ class Follow extends AppModel {
     public function saveFollowings($me,$followings) {
 
         // 重いが、重複は防げるクエリ。
+        $data = array();
         foreach ($followings->ids as $id) {
             $condition = array(
                 'user_id' => $me->id,
                 'following_user_id' => $id
             );
-            $data = array();
             if (!$this->hasAny($condition)) {
                 $data[] = array(
-                    'user_id' => $me->id,
-                    'following_user_id' => $id
+                    'Follow' => array(
+                        'user_id' => $me->id,
+                        'following_user_id' => $id
+                    )
                 );
             }
+        }
+
+        if (empty($data)) {
+            return true;
         }
 
         $stat = $this->saveMany($data);

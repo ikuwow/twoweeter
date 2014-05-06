@@ -7,7 +7,7 @@ class UsersController extends AppController {
         'UserDetail',
         'Tweet',
         'Follow',
-        'Timezone'
+        // 'Timezone'
     );
 
     public $helpers = array(
@@ -100,10 +100,12 @@ class UsersController extends AppController {
                 'conditions' => array('user_id'=>$me->id)
             ));
 
+            // 初回処理
             // 初回ならアクセストークン、timezoneをセーブ
-            if (!$user_detail_id) {
+            if ($user_detail_id==0) {
 
                 // timezoneあるなし
+                /*
                 if (!isset($settings->time_zone)) {
                     $tzname = 'UTC';
                     $tzoffset = 0;
@@ -111,14 +113,15 @@ class UsersController extends AppController {
                     $tzname = $settings->time_zone->name;
                     $tzoffset = $settings->time_zone->utc_offset;
                 }
+                 */
 
 
                 $stat = $this->UserDetail->registerImport(
                     $me->id,
                     $access_token['oauth_token'],
-                    $access_token['oauth_token_secret'],
-                    $tzname,
-                    $tzoffset
+                    $access_token['oauth_token_secret']
+                    // $tzname,
+                    // $tzoffset
                 );
 
                 if (!$stat) {
@@ -173,6 +176,7 @@ class UsersController extends AppController {
         $stat = $this->User->saveTwitterUserInfos($following_userinfos);
         if (!$stat) {
             $this->Session->setFlash('Unexpected error has occured in saving twitter user infos.','default',array('class'=>'alert alert-danger'));
+
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
         
@@ -182,7 +186,6 @@ class UsersController extends AppController {
             $this->Session->setFlash('Unexpected error has occured in saving following infos.','default',array('class'=>'alert alert-danger'));
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
-        
 
         // ツイートの読み込み
         // これは確実に遅い
@@ -201,13 +204,27 @@ class UsersController extends AppController {
             $stat = $stat && $this->Tweet->saveTweetsByUserId($info->id,$tweets);
         }
 
+        // 自分のツイートを読み込む
+        $me = $this->Session->read('me');
+        $tweets = $to->get(
+            'statuses/user_timeline',
+            array(
+                'user_id' => $me->id,
+                'count' => Configure::read('NUM_TWEET_TIMELINE'),
+                'include_rts' => true,
+                'trim_user' => true
+            )
+        );
+        $stat = $stat && $this->Tweet->saveTweetsByUserId($info->id,$tweets);
+
+
         // ツイート読み込みでのDBエラー処理
         if (!$stat) {
             $this->Session->setFlash('Some error occured in importing tweets.','default',array('class'=>'alert alert-danger'));
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
 
-        $this->Session->setFlash('Reading Tweets Done successfully!','default',array('alert alert-success'));
+        $this->Session->setFlash('Reading Tweets Done successfully!','default',array('class'=>'alert alert-success'));
         $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
     
     }

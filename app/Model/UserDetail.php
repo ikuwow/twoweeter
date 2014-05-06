@@ -3,7 +3,7 @@ class UserDetail extends AppModel {
 
     public $belongsTo = array(
         'User',
-        'Timezone'
+        // 'Timezone'
     );
 
     public $validate = array(
@@ -28,19 +28,22 @@ class UserDetail extends AppModel {
 
     /**
      */
-    public function registerImport($user_id,$at,$atc,$tname,$toffset) {
+    public function registerImport($user_id,$at,$atc,$tzname,$tzoffset) {
         $data = array(
             'UserDetail' => array(
                 'user_id' => $user_id,
                 'access_token' => $at,
                 'access_token_secret' => $atc
             ),
+            /*
             'Timezone' => array(
-                'name' => $tname,
-                'utc_offset' => $toffset
+                'name' => $tzname,
+                'utc_offset' => $tzoffset
             ),
+             */
         );
-        $stat = $this->saveAssociated($data);
+        // $stat = $this->saveAssociated($data);
+        $stat = $this->save($data);
         return $stat;
     }
 

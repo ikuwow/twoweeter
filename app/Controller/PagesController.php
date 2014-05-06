@@ -51,7 +51,7 @@ class PagesController extends AppController {
      */ 
     public function login() {
         // meがあればログイン中
-        if ($this->Session->read('me')) {
+        if ($this->Session->read('user')) {
             $this->redirect(array(
                 'controller'=>'mypages','action'=>'timeline'
             ));

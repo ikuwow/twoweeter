@@ -51,8 +51,8 @@ class User extends AppModel {
     // saveTwitterUserInfoの複数版 
     public function saveTwitterUserInfos($userinfos) {
         $data = array();
-        foreach ($userinfos as $key => $info) {
-            $data[$key] = array(
+        foreach ($userinfos as $info) {
+            $data[] = array(
                 'User' => array(
                     'id' => $info->id,
                     'screen_name' => $info->screen_name,
