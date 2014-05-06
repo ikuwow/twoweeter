@@ -15,7 +15,6 @@ class UserFixture extends CakeTestFixture {
 		'screen_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 15, 'key' => 'unique', 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 20, 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
 		'icon_url' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 100, 'collate' => 'utf8mb4_general_ci', 'charset' => 'utf8mb4'),
-		'is_registered' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
@@ -36,7 +35,6 @@ class UserFixture extends CakeTestFixture {
 			'screen_name' => 'testuser1',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
@@ -45,7 +43,6 @@ class UserFixture extends CakeTestFixture {
 			'screen_name' => 'testuser2',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
@@ -54,7 +51,6 @@ class UserFixture extends CakeTestFixture {
 			'screen_name' => 'testuser3',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
 		),
@@ -63,7 +59,6 @@ class UserFixture extends CakeTestFixture {
 			'screen_name' => 'testuser4',
 			'name' => 'Lorem ipsum dolor ',
 			'icon_url' => 'Lorem ipsum dolor sit amet',
-			'is_registered' => 0,
 			'created' => '2014-04-26 20:20:13',
 			'modified' => '2014-04-26 20:20:13'
         )

@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS users (
     screen_name VARCHAR(15) UNIQUE NOT NULL,
     name VARCHAR(20) NOT NULL,
     icon_url VARCHAR(100),
-    is_registered BOOLEAN NOT NULL DEFAULT 0,
     created DATETIME NOT NULL,
     modified DATETIME
 ) ENGINE = InnoDB default charset=utf8mb4;

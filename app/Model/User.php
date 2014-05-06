@@ -21,7 +21,6 @@ class User extends AppModel {
         'icon_url' => array(
             'rule' => 'url'
         ),
-        'is_registered' => 'notEmpty'
     );
 
     public function getUserById($id) {
@@ -35,14 +34,13 @@ class User extends AppModel {
     }
         
 
-    public function saveTwitterUserInfo($me,$is_registered=null) {
+    public function saveTwitterUserInfo($me) {
         $data = array(
             'User' => array(
                 'id' => $me->id,
                 'screen_name' => $me->screen_name,
                 'name' => $me->name,
                 'icon_url' => $me->profile_image_url,
-                //'is_registered' => $is_registered,
                 'last_login' => date('Y-m-d H:i:s'),
             )
         );
@@ -60,7 +58,6 @@ class User extends AppModel {
                     'screen_name' => $info->screen_name,
                     'name' => $info->name,
                     'icon_url' => $info->profile_image_url,
-                    //'is_registered' => $is_registered,
                     'last_login' => date('Y-m-d H:i:s'),
                 )
             );
