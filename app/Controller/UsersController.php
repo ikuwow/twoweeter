@@ -164,6 +164,7 @@ class UsersController extends AppController {
             $this->Session->read('user.access_token_secret')
         );
 
+
         $followings = $to->get('friends/ids');
         $following_userinfos = $to->get(
             'users/lookup',
@@ -173,10 +174,14 @@ class UsersController extends AppController {
         );
 
         // ユーザ情報の保存
+        $stat = array();
         $stat = $this->User->saveTwitterUserInfos($following_userinfos);
         if (!$stat) {
-            $this->Session->setFlash('Unexpected error has occured in saving twitter user infos.','default',array('class'=>'alert alert-danger'));
-
+            $this->Session->setFlash(
+                'Unexpected error has occured in saving twitter user infos.',
+                'default',
+                array('class'=>'alert alert-danger')
+            );
             $this->redirect(array('controller'=>'mypages','action'=>'timeline'));
         }
         

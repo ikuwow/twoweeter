@@ -28,7 +28,7 @@ class UserDetail extends AppModel {
 
     /**
      */
-    public function registerImport($user_id,$at,$atc,$tzname,$tzoffset) {
+    public function registerImport($user_id,$at,$atc) {
         $data = array(
             'UserDetail' => array(
                 'user_id' => $user_id,
